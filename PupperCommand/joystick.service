@@ -1,0 +1,13 @@
+[Unit]
+Description=Pupper Joystick service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/QuadrupedRobot/PupperCommand/joystick.py
+Restart=always
+RestartSec=5
+KillSignal=2
+TimeoutStopSec=10
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
