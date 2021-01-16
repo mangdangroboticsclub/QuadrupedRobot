@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# 1.Initialize power switch and alarm units
+# 2.start battery moniter daemon
+#
+# Copyright (c) 2020, Mangdang Technology Co., Limited
+#
+#
+
+IO_MAP=(
+12 0
+13 0
+16 0
+20 1
+19 1
+26 1
+)
+
+function io_init(){
+	len=${#IO_MAP[@]}
+	for((i=0;i<len;i+=2))
+	do
+		io=${IO_MAP[i]}
+		val=${IO_MAP[i+1]}
+#		echo "io = $io , set default value $val";
+		echo $io > /sys/class/gpio/export
+		echo out > /sys/class/gpio/gpio$io/direction
+		echo $val > /sys/class/gpio/gpio$io/value
+	done
+}
+
+io_init
+sleep 1
+batterymonitor &
