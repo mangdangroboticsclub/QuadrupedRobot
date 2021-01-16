@@ -9,7 +9,7 @@ import time
 MESSAGE_RATE = 20
 PUPPER_COLOR = {"red":0, "blue":0, "green":255}
 
-joystick_pub = Publisher(8830)
+joystick_pub = Publisher(8830,65530)
 joystick_subcriber = Subscriber(8840, timeout=0.01)
 joystick = Joystick()
 joystick.led_color(**PUPPER_COLOR)
