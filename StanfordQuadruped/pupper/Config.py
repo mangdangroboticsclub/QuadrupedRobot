@@ -6,9 +6,9 @@ from enum import Enum
 # TODO: put these somewhere else
 class PWMParams:
     def __init__(self):
-        self.pins = np.array([[2, 14, 18, 23], [3, 15, 27, 24], [4, 17, 22, 25]])
-        self.range = 4000
-        self.freq = 250
+        self.pins = np.array([[15, 12, 9, 6], [14, 11, 8, 5], [13, 10, 7, 4]])
+        self.range = 4096  ## ADC 12 bits
+        self.freq = 150  ## PWM freq
 
 
 class ServoParams:
@@ -20,7 +20,7 @@ class ServoParams:
         self.neutral_angle_degrees = NEUTRAL_ANGLE_DEGREES
 
         self.servo_multipliers = np.array(
-            [[1, 1, 1, 1], [-1, 1, -1, 1], [1, -1, 1, -1]]
+            [[1, 1, 1, 1], [-1, 1, -1, 1], [-1, 1, -1, 1]]
         )
 
     @property
@@ -31,35 +31,35 @@ class ServoParams:
 class Configuration:
     def __init__(self):
         ################# CONTROLLER BASE COLOR ##############
-        self.ps4_color = PS4_COLOR    
-        self.ps4_deactivated_color = PS4_DEACTIVATED_COLOR    
+        self.ps4_color = PS4_COLOR
+        self.ps4_deactivated_color = PS4_DEACTIVATED_COLOR
 
         #################### COMMANDS ####################
-        self.max_x_velocity = 0.4
-        self.max_y_velocity = 0.3
-        self.max_yaw_rate = 2.0
-        self.max_pitch = 30.0 * np.pi / 180.0
-        
+        self.max_x_velocity = 0.18
+        self.max_y_velocity = 0.20
+        self.max_yaw_rate = 2
+        self.max_pitch = 20.0 * np.pi / 180.0
+
         #################### MOVEMENT PARAMS ####################
         self.z_time_constant = 0.02
-        self.z_speed = 0.03  # maximum speed [m/s]
+        self.z_speed = 0.01  # maximum speed [m/s]
         self.pitch_deadband = 0.02
         self.pitch_time_constant = 0.25
         self.max_pitch_rate = 0.15
-        self.roll_speed = 0.16  # maximum roll rate [rad/s]
+        self.roll_speed = 0.16  # maximum roll rate [rad/s] 0.16
         self.yaw_time_constant = 0.3
         self.max_stance_yaw = 1.2
-        self.max_stance_yaw_rate = 2.0
+        self.max_stance_yaw_rate = 1.5
 
         #################### STANCE ####################
-        self.delta_x = 0.1
-        self.delta_y = 0.09
-        self.x_shift = 0.0
-        self.default_z_ref = -0.16
+        self.delta_x = 0.050
+        self.delta_y = 0.050
+        self.x_shift = -0.00
+        self.default_z_ref = -0.07
 
         #################### SWING ######################
         self.z_coeffs = None
-        self.z_clearance = 0.07
+        self.z_clearance = 0.03
         self.alpha = (
             0.5  # Ratio between touchdown distance and total horizontal stance movement
         )
@@ -68,34 +68,34 @@ class Configuration:
         )
 
         #################### GAIT #######################
-        self.dt = 0.01
+        self.dt = 0.03
         self.num_phases = 4
         self.contact_phases = np.array(
             [[1, 1, 1, 0], [1, 0, 1, 1], [1, 0, 1, 1], [1, 1, 1, 0]]
         )
         self.overlap_time = (
-            0.10  # duration of the phase where all four feet are on the ground
+            0.09  # duration of the phase where all four feet are on the ground
         )
         self.swing_time = (
-            0.15  # duration of the phase when only two feet are on the ground
+            0.1  # duration of the phase when only two feet are on the ground
         )
 
         ######################## GEOMETRY ######################
-        self.LEG_FB = 0.10  # front-back distance from center line to leg axis
-        self.LEG_LR = 0.04  # left-right distance from center line to leg plane
-        self.LEG_L2 = 0.115
-        self.LEG_L1 = 0.1235
-        self.ABDUCTION_OFFSET = 0.03  # distance from abduction axis to leg
-        self.FOOT_RADIUS = 0.01
+        self.LEG_FB = 0.050  # front-back distance from center line to leg axis
+        self.LEG_LR = 0.0235  # left-right distance from center line to leg plane
+        self.LEG_L2 = 0.060
+        self.LEG_L1 = 0.050
+        self.ABDUCTION_OFFSET = 0.026  # distance from abduction axis to leg
+        self.FOOT_RADIUS = 0.00
 
         self.HIP_L = 0.0394
         self.HIP_W = 0.0744
         self.HIP_T = 0.0214
         self.HIP_OFFSET = 0.0132
 
-        self.L = 0.276
-        self.W = 0.100
-        self.T = 0.050
+        self.L = 0.176
+        self.W = 0.060
+        self.T = 0.045
 
         self.LEG_ORIGINS = np.array(
             [
@@ -115,9 +115,9 @@ class Configuration:
         )
 
         ################### INERTIAL ####################
-        self.FRAME_MASS = 0.560  # kg
-        self.MODULE_MASS = 0.080  # kg
-        self.LEG_MASS = 0.030  # kg
+        self.FRAME_MASS = 0.200  # kg
+        self.MODULE_MASS = 0.020  # kg
+        self.LEG_MASS = 0.010  # kg
         self.MASS = self.FRAME_MASS + (self.MODULE_MASS + self.LEG_MASS) * 4
 
         # Compensation factor of 3 because the inertia measurement was just
@@ -192,7 +192,6 @@ class Configuration:
     def phase_length(self):
         return 2 * self.overlap_ticks + 2 * self.swing_ticks
 
-        
 class SimulationConfig:
     def __init__(self):
         self.XML_IN = "pupper.xml"
@@ -205,7 +204,7 @@ class SimulationConfig:
         self.JOINT_SOLIMP = "0.9 0.95 0.001"  # joint constraint parameters
         self.GEOM_SOLREF = "0.01 1"  # time constant and damping ratio for geom contacts
         self.GEOM_SOLIMP = "0.9 0.95 0.001"  # geometry contact parameters
-        
+
         # Joint params
         G = 220  # Servo gear ratio
         m_rotor = 0.016  # Servo rotor mass

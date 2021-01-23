@@ -111,7 +111,7 @@ class Controller:
         elif state.behavior_state == BehaviorState.HOP:
             state.foot_locations = (
                 self.config.default_stance
-                + np.array([0, 0, -0.09])[:, np.newaxis]
+                + np.array([0, 0, -0.03])[:, np.newaxis]
             )
             state.joint_angles = self.inverse_kinematics(
                 state.foot_locations, self.config
@@ -120,7 +120,7 @@ class Controller:
         elif state.behavior_state == BehaviorState.FINISHHOP:
             state.foot_locations = (
                 self.config.default_stance
-                + np.array([0, 0, -0.22])[:, np.newaxis]
+                + np.array([0, 0, -0.105])[:, np.newaxis]
             )
             state.joint_angles = self.inverse_kinematics(
                 state.foot_locations, self.config
