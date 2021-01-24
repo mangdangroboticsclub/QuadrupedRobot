@@ -1,12 +1,29 @@
 import numpy as np
 import time
-from src.IMU import IMU
+
+sys.path.append("..")
+sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("../") for name in dirs])
+from Mangdang.IMU import IMU
 from src.Controller import Controller
 from src.JoystickInterface import JoystickInterface
 from src.State import State
 from pupper.HardwareInterface import HardwareInterface
 from pupper.Config import Configuration
 from pupper.Kinematics import four_legs_inverse_kinematics
+
+
+quat_orientation = np.array([1, 0, 0, 0])  # IMU orientation data (Quaternions)
+
+def IMU_read(use_IMU,imu):
+    """IMU data read program
+    """
+    global quat_orientation
+    if use_IMU:
+        while True:
+            quat_orientation = imu.read_orientation()
+            time.sleep(0.01)
+    else:
+        quat_orientation = np.array([1, 0, 0, 0])
 
 def main(use_imu=False):
     """Main program
@@ -17,9 +34,16 @@ def main(use_imu=False):
     hardware_interface = HardwareInterface()
 
     # Create imu handle
-    if use_imu:
-        imu = IMU(port="/dev/ttyACM0")
-        imu.flush_buffer()
+    if use_IMU:
+        imu = IMU(0x4A)
+        imu.begin()
+        time.sleep(0.5)
+
+    #Startup the IMU data reading thread
+    try:
+        _thread.start_new_thread( IMU_read, (use_IMU,imu,) )
+    except:
+        print ("Error: IMU thread could not startup!!!")
 
     # Create controller and user input handles
     controller = Controller(
@@ -64,11 +88,8 @@ def main(use_imu=False):
                 break
 
             # Read imu data. Orientation will be None if no data was available
-            quat_orientation = (
-                imu.read_orientation() if use_imu else np.array([1, 0, 0, 0])
-            )
             state.quat_orientation = quat_orientation
-
+            print(state.quat_orientation)
             # Step the controller forward by dt
             controller.run(state, command)
 

@@ -1,5 +1,6 @@
 #yes | sudo apt-get install adafruit-circuitpython-busdevice
 yes | sudo apt-get install cmake
+yes | pip install wiringpi
 
 ROOT_DIR=`pwd`
 
