@@ -37,7 +37,7 @@ def filter_lowpass(data_new,data_last):
 
 class IMU:
     def __init__(self, addr=0x4A):
-        self.bno080 = ctypes.CDLL('./library/libbno080.so')
+        self.bno080 = ctypes.CDLL('/home/pi/QuadrupedRobot/Mangdang/IMU/library/libbno080.so')
 
         self.bno080.IMU_getQuatI.restype = ctypes.c_float
         self.bno080.IMU_getQuatJ.restype = ctypes.c_float

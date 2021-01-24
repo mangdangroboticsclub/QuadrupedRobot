@@ -25,7 +25,7 @@ class JoystickInterface:
         try:
             msg = self.udp_handle.get()
             command = Command()
-            
+
             ####### Handle discrete commands ########
             # Check if requesting a state transition to trotting, or from trotting to resting
             gait_toggle = msg["R1"]
@@ -33,8 +33,8 @@ class JoystickInterface:
 
             # Check if requesting a state transition to hopping, from trotting or resting
             hop_toggle = msg["x"]
-            command.hop_event = (hop_toggle == 1 and self.previous_hop_toggle == 0)            
-            
+            command.hop_event = (hop_toggle == 1 and self.previous_hop_toggle == 0)
+
             activate_toggle = msg["L1"]
             command.activate_event = (activate_toggle == 1 and self.previous_activate_toggle == 0)
 
@@ -66,7 +66,7 @@ class JoystickInterface:
 
             height_movement = msg["dpady"]
             command.height = state.height - message_dt * self.config.z_speed * height_movement
-            
+
             roll_movement = - msg["dpadx"]
             command.roll = state.roll + message_dt * self.config.roll_speed * roll_movement
 

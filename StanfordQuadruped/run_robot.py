@@ -1,9 +1,13 @@
-import numpy as np
+import os
+import sys
+import threading
 import time
+
+import numpy as np
 
 sys.path.append("..")
 sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("../") for name in dirs])
-from Mangdang.IMU import IMU
+from Mangdang.IMU.IMU import IMU
 from src.Controller import Controller
 from src.JoystickInterface import JoystickInterface
 from src.State import State
@@ -11,10 +15,10 @@ from pupper.HardwareInterface import HardwareInterface
 from pupper.Config import Configuration
 from pupper.Kinematics import four_legs_inverse_kinematics
 
-
 quat_orientation = np.array([1, 0, 0, 0])  # IMU orientation data (Quaternions)
 
-def IMU_read(use_IMU,imu):
+
+def IMU_read(use_IMU, imu):
     """IMU data read program
     """
     global quat_orientation
@@ -25,25 +29,29 @@ def IMU_read(use_IMU,imu):
     else:
         quat_orientation = np.array([1, 0, 0, 0])
 
-def main(use_imu=False):
+
+def main():
     """Main program
     """
+    use_IMU = True
 
     # Create config
     config = Configuration()
     hardware_interface = HardwareInterface()
 
     # Create imu handle
+
     if use_IMU:
         imu = IMU(0x4A)
         imu.begin()
         time.sleep(0.5)
 
-    #Startup the IMU data reading thread
+    # Startup the IMU data reading thread
     try:
-        _thread.start_new_thread( IMU_read, (use_IMU,imu,) )
+        _imuThread = threading.Thread(target=IMU_read, args=(use_IMU, imu,))
+        _imuThread.start()
     except:
-        print ("Error: IMU thread could not startup!!!")
+        print("Error: IMU thread could not startup!!!")
 
     # Create controller and user input handles
     controller = Controller(
@@ -89,12 +97,9 @@ def main(use_imu=False):
 
             # Read imu data. Orientation will be None if no data was available
             state.quat_orientation = quat_orientation
-            print(state.quat_orientation)
             # Step the controller forward by dt
             controller.run(state, command)
 
             # Update the pwm widths going to the servos
             hardware_interface.set_actuator_postions(state.joint_angles)
-
-
 main()
