@@ -1,7 +1,10 @@
-import wiringpi
-import ctypes
+import board
+import busio
 import numpy as np
 import time
+import RPi.GPIO as GPIO
+from Mangdang.IMU.i2c import BNO08X_I2C
+from . import BNO_REPORT_ROTATION_VECTOR
 
 def filter_deabnormal(data_new,data_last):
     ''' deabnormal filter, remove the abnormal value.
@@ -36,21 +39,20 @@ def filter_lowpass(data_new,data_last):
     return data_lowpass
 
 class IMU:
-    def __init__(self, addr=0x4A):
-        self.bno080 = ctypes.CDLL('/home/pi/QuadrupedRobot/Mangdang/IMU/library/libbno080.so')
+    def __init__(self):
+        self.imu_resetIO = 24
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.imu_resetIO, GPIO.OUT)
+        GPIO.output(self.imu_resetIO, 1)
 
-        self.bno080.IMU_getQuatI.restype = ctypes.c_float
-        self.bno080.IMU_getQuatJ.restype = ctypes.c_float
-        self.bno080.IMU_getQuatK.restype = ctypes.c_float
-        self.bno080.IMU_getQuatReal.restype = ctypes.c_float
-
-        self.i2c = wiringpi.wiringPiI2CSetupInterface("/dev/i2c-3", addr)
-        self.last_quat = np.array([1, 0, 0, 0])
-        self.start_time = time.time()
+        i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
+        time.sleep(0.2)
+        self.imu = BNO08X_I2C(i2c)
+        self.last_quat = [1, 0, 0, 0]
+        self.reset_IMU = False
 
     def begin(self):
-        self.bno080.IMU_begin(self.i2c)
-        self.bno080.IMU_enableRotationVector(self.i2c, 10)
+        self.imu.enable_feature(BNO_REPORT_ROTATION_VECTOR)
 
     def read_orientation(self):
         """Reads quaternion measurements from the Teensy . Returns the read quaternion.
@@ -65,21 +67,25 @@ class IMU:
                 np array (4,)
                     If there was quaternion data to read on the I2C port returns the quaternion as a numpy array, otherwise returns the last read quaternion.
                 """
-        self.start_time = time.time()
-        while True:
-            if self.bno080.IMU_dataAvailable(self.i2c):
-                quat = [self.bno080.IMU_getQuatReal(), self.bno080.IMU_getQuatI(), self.bno080.IMU_getQuatJ(), self.bno080.IMU_getQuatK()]
-                if quat != [0, 0, 0, 0]:
-                    new_quat = np.array(quat, dtype=np.float64)
-                    normal_quat = filter_deabnormal(new_quat,self.last_quat)
-                    lp_quat = filter_lowpass(normal_quat,self.last_quat)
-                    self.last_quat = lp_quat
-                    self.start_time = time.time()
-                    return self.last_quat
-                if (time.time() - self.start_time) > 0.005:
-                    return self.last_quat
+        try:
+            if self.reset_IMU:
+                GPIO.output(self.imu_resetIO, 1)
+                time.sleep(0.1)
+                i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
+                self.imu = BNO08X_I2C(i2c)
+                time.sleep(0.1)
+                self.imu.enable_feature(BNO_REPORT_ROTATION_VECTOR)
+                self.reset_IMU = False
             else:
-                if(time.time()-self.start_time) > 0.005:
-                    return self.last_quat
-                print("quaternion data is not available")
-
+                quat_i, quat_j, quat_k, quat_real = self.imu.quaternion
+                quat_orientation = [quat_real, quat_i, quat_j, quat_k]
+                new_quat = np.array(quat_orientation, dtype=np.float64)
+                normal_quat = filter_deabnormal(new_quat, self.last_quat)
+                lp_quat = filter_lowpass(normal_quat, self.last_quat)
+                self.last_quat = lp_quat
+                return self.last_quat
+        except:
+            GPIO.output(self.imu_resetIO, 0)
+            self.reset_IMU = True
+            time.sleep(0.05)
+            return self.last_quat
