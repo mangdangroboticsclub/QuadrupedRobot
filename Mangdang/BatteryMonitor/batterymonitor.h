@@ -23,8 +23,8 @@
 #define HALT_THRESHOLD         5.7
 
 //IO file node
-#define RED_LED_NODE            "/sys/class/gpio/gpio12/value"
-#define GREEN_LED_NODE          "/sys/class/gpio/gpio13/value"
+#define RED_LED_NODE            "/sys/class/gpio/gpio13/value"
+#define GREEN_LED_NODE          "/sys/class/gpio/gpio12/value"
 #define BUZZER_NODE             "/sys/class/gpio/gpio16/value"
 #define Vbat_Servo_1_EN         "/sys/class/gpio/gpio19/value"
 #define Vbat_Servo_2_EN         "/sys/class/gpio/gpio26/value"

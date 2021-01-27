@@ -75,12 +75,13 @@ void get_battery_info(batt_infor* bat_inf)
 	//get current time
 	bat_inf->tm = time(NULL);
 
-	//print present battery info
+	/*print present battery info
 	local_time = localtime(&(bat_inf->tm));
         fprintf(stderr, "battery info: [%d-%02d-%02d %02d:%02d:%02d] " ,                       \
 	        (1900+local_time->tm_year), (1+local_time->tm_mon),   local_time->tm_mday,     \
                 local_time->tm_hour,        local_time->tm_min ,      local_time->tm_sec);
 	fprintf(stderr , " %4.2f%c(soc)  %7.2f(mA)  %3.2f(v)\n" , bat_inf->soc, '%', bat_inf->currnet, bat_inf->voltage);
+	*/
 
 #if DEBUG
 	//save battery info in log file
