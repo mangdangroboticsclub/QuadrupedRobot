@@ -42,9 +42,10 @@ def main():
     # Create imu handle
 
     if use_IMU:
-        imu = IMU(0x4A)
+        imu = IMU()
+        time.sleep(0.1)
         imu.begin()
-        time.sleep(0.5)
+        time.sleep(0.1)
 
     # Startup the IMU data reading thread
     try:
