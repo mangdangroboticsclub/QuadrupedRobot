@@ -14,7 +14,6 @@ python3 setup.py clean --all install
 yes | sudo pip3 install pexpect
 
 # Install rover command
-sudo rm /usr/local/bin/rover -f
 sudo ln -s $FOLDER/rover.py /usr/local/bin/rover
 
 # Remove repetitive code

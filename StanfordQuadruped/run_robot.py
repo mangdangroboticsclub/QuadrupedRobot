@@ -33,7 +33,7 @@ def IMU_read(use_IMU, imu):
 def main():
     """Main program
     """
-    use_IMU = True
+    use_IMU = False
 
     # Create config
     config = Configuration()

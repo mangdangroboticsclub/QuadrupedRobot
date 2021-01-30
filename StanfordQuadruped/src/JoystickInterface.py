@@ -18,7 +18,7 @@ class JoystickInterface:
 
         self.message_rate = 50
         self.udp_handle = UDPComms.Subscriber(udp_port, timeout=0.3)
-        self.udp_publisher = UDPComms.Publisher(udp_publisher_port,65532)
+        self.udp_publisher = UDPComms.Publisher(udp_publisher_port)
 
 
     def get_command(self, state, do_print=False):
