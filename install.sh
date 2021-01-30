@@ -1,4 +1,5 @@
 #yes | sudo apt-get install adafruit-circuitpython-busdevice
+sudo apt-get update
 yes | sudo apt-get install cmake
 yes | sudo apt-get install i2c-tools python-smbus
 yes | pip install wiringpi
