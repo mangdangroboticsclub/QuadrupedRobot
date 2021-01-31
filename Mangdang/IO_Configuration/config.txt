@@ -43,7 +43,7 @@
 #arm_freq=800
 
 # Uncomment some or all of these to enable the optional hardware interfaces
-#dtparam=i2c_arm=on
+dtparam=i2c_arm=on
 #dtparam=i2s=on
 #dtparam=spi=on
 
@@ -63,10 +63,5 @@ max_framebuffers=2
 
 [all]
 #dtoverlay=vc4-fkms-v3d
-
-# Export uart and i2c for Mangdang IO board
-enable_uart=1
-dtparam=i2c_arm=on
-dtoverlay=i2c4,pins_6_7
 dtoverlay=i2c3,pins_4_5
-dtoverlay=spi0-1cs
+dtoverlay=i2c4,pins_6_7

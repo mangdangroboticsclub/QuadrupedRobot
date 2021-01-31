@@ -22,4 +22,4 @@ cd UDPComms
 sudo bash install.sh
 
 cd $ROOT_DIR
-#sudo cp Mangdang/IO_Configuration/config.txt /boot/ -f
+sudo cp Mangdang/IO_Configuration/config.txt /boot/ -f
