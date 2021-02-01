@@ -20,7 +20,7 @@ class ServoParams:
         self.neutral_angle_degrees = NEUTRAL_ANGLE_DEGREES
 
         self.servo_multipliers = np.array(
-            [[1, 1, 1, 1], [-1, 1, -1, 1], [-1, 1, -1, 1]]
+            [[1, 1, -1, -1], [-1, 1, -1, 1], [-1, 1, -1, 1]]
         )
 
     @property
@@ -35,7 +35,7 @@ class Configuration:
         self.ps4_deactivated_color = PS4_DEACTIVATED_COLOR
 
         #################### COMMANDS ####################
-        self.max_x_velocity = 0.18
+        self.max_x_velocity = 0.20
         self.max_y_velocity = 0.20
         self.max_yaw_rate = 2
         self.max_pitch = 20.0 * np.pi / 180.0
@@ -52,10 +52,10 @@ class Configuration:
         self.max_stance_yaw_rate = 1.5
 
         #################### STANCE ####################
-        self.delta_x = 0.050
+        self.delta_x = 0.059
         self.delta_y = 0.050
         self.x_shift = -0.00
-        self.default_z_ref = -0.07
+        self.default_z_ref = -0.08
 
         #################### SWING ######################
         self.z_coeffs = None
@@ -81,7 +81,7 @@ class Configuration:
         )
 
         ######################## GEOMETRY ######################
-        self.LEG_FB = 0.050  # front-back distance from center line to leg axis
+        self.LEG_FB = 0.059  # front-back distance from center line to leg axis
         self.LEG_LR = 0.0235  # left-right distance from center line to leg plane
         self.LEG_L2 = 0.060
         self.LEG_L1 = 0.050
