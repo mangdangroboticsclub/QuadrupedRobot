@@ -76,6 +76,7 @@ class IMU:
                 time.sleep(0.1)
                 self.imu.enable_feature(BNO_REPORT_ROTATION_VECTOR)
                 self.reset_IMU = False
+                return self.last_quat
             else:
                 quat_i, quat_j, quat_k, quat_real = self.imu.quaternion
                 quat_orientation = [quat_real, quat_i, quat_j, quat_k]
