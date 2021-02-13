@@ -3,8 +3,8 @@ sudo apt-get update
 yes | sudo apt-get install cmake
 yes | sudo apt-get install i2c-tools python-smbus
 yes | pip install wiringpi
-yes | pip3 install adafruit-blinka
-yes | pip3 install adafruit-CircuitPython-BusDevice
+yes | pip3 install adafruit-blinka==5.13.1
+yes | pip3 install adafruit-CircuitPython-BusDevice==5.0.4
 
 ROOT_DIR=`pwd`
 
