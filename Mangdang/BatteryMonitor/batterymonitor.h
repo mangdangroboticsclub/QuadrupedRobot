@@ -30,7 +30,7 @@
 #define Vbat_Servo_2_EN         "/sys/class/gpio/gpio26/value"
 #define VBAT_ARM_EN             "/sys/class/gpio/gpio20/value"
 
-#define TIMER_PERIOD            40 //s
+#define TIMER_PERIOD            35 //s
 #define BUFFER_SIZE             100
 
 #define BATTERY_FG_LOG          "/var/log/battery_info_log.txt"
