@@ -2,7 +2,7 @@
 Description=Pupper Joystick service
 
 [Service]
-ExecStart=/usr/bin/python3 /home/pi/QuadrupedRobot/PupperCommand/joystick.py
+ExecStart=/usr/bin/python3 /home/ubuntu/Robotics/QuadrupedRobot/PupperCommand/joystick.py
 Restart=always
 RestartSec=5
 KillSignal=2

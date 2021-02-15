@@ -1,8 +1,8 @@
 import os
 import sys
 
-sys.path.append("..")
-sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("../") for name in dirs])
+sys.path.append("/home/ubuntu/Robotics/QuadrupedRobot/")
+sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("/home/ubuntu/Robotics/QuadrupedRobot") for name in dirs])
 from Mangdang import PWMController
 from pupper.Config import ServoParams, PWMParams
 #from __future__ import division

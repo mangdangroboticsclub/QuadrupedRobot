@@ -5,8 +5,8 @@ import time
 
 import numpy as np
 
-sys.path.append("..")
-sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("../") for name in dirs])
+sys.path.append("/home/ubuntu/Robotics/QuadrupedRobot")
+sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("/home/ubuntu/Robotics/QuadrupedRobot") for name in dirs])
 from Mangdang.IMU.IMU import IMU
 from src.Controller import Controller
 from src.JoystickInterface import JoystickInterface
@@ -33,7 +33,7 @@ def IMU_read(use_IMU, imu):
 def main():
     """Main program
     """
-    use_IMU = True
+    use_IMU = False
 
     # Create config
     config = Configuration()
@@ -46,13 +46,12 @@ def main():
         time.sleep(0.1)
         imu.begin()
         time.sleep(0.1)
-
-    # Startup the IMU data reading thread
-    try:
-        _imuThread = threading.Thread(target=IMU_read, args=(use_IMU, imu,))
-        _imuThread.start()
-    except:
-        print("Error: IMU thread could not startup!!!")
+        # Startup the IMU data reading thread
+        try:
+            _imuThread = threading.Thread(target=IMU_read, args=(use_IMU, imu,))
+            _imuThread.start()
+        except:
+            print("Error: IMU thread could not startup!!!")
 
     # Create controller and user input handles
     controller = Controller(
@@ -103,4 +102,7 @@ def main():
 
             # Update the pwm widths going to the servos
             hardware_interface.set_actuator_postions(state.joint_angles)
-main()
+try:
+    main()
+except KeyboardInterrupt:
+    pass

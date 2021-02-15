@@ -19,8 +19,8 @@
 #define SLAVE_ADDRESS          0x36
 
 #define DEV_NAME_VALUE         0x5
-#define ODV_THRESHOLD          6.0
-#define HALT_THRESHOLD         5.7
+#define ODV_THRESHOLD          6.5
+#define HALT_THRESHOLD         6.0
 
 //IO file node
 #define RED_LED_NODE            "/sys/class/gpio/gpio13/value"

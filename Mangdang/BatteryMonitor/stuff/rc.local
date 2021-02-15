@@ -29,6 +29,15 @@ function io_init(){
 	done
 }
 
+# init IO
 io_init
 sleep 1
+
+# init the Bluetooth
+sudo hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+sleep 1
+sudo hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+sleep 2
+
+# start battery monitor deamon
 batterymonitor &

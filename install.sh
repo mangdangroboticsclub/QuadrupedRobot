@@ -1,25 +1,14 @@
-#yes | sudo apt-get install adafruit-circuitpython-busdevice
-sudo apt-get update
-yes | sudo apt-get install cmake
-yes | sudo apt-get install i2c-tools python-smbus
-yes | pip install wiringpi
-yes | pip3 install adafruit-blinka==5.13.1
-yes | pip3 install adafruit-CircuitPython-BusDevice==5.0.4
+#!/usr/bin/env sh
+# Install Mangdang Puppe-Mini
 
-ROOT_DIR=`pwd`
-
+# build and deploy battery monitor deamon and IO configuration
+sudo cp Mangdang/IO_Configuration/syscfg.txt /boot/firmware/ -f
 cd Mangdang/BatteryMonitor/
 cmake .
 make
 sudo bash install.sh
 
-cd $ROOT_DIR
-cd StanfordQuadruped
-sudo bash install.sh
+# Install standford robot and UDPComms services
+sudo bash ~/Robotics/QuadrupedRobot/StanfordQuadruped/install.sh
+sudo bash ~/Robotics/QuadrupedRobot/UDPComms/install.sh
 
-cd $ROOT_DIR
-cd UDPComms
-sudo bash install.sh
-
-cd $ROOT_DIR
-sudo cp Mangdang/IO_Configuration/config.txt /boot/ -f
