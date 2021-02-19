@@ -19,7 +19,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-#import Mangdang.Adafruit_GPIO.Platform as Platform
+import Adafruit_GPIO.Platform as Platform
 
 
 OUT     = 0

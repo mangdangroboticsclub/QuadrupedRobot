@@ -15,3 +15,5 @@ This folder is for Mangdang additional code.
 4. Adafruit_GPIO : Third party Adafruit interface
 
 5. IMU: BNO080 sensor driver
+
+6. LCD: ST7789-based IPS LCD driver interface

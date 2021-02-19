@@ -28,3 +28,4 @@ yes | sudo pip3 install pyserial  # serial port control for python
 yes | sudo pip3 install RPi.GPIO
 yes | sudo pip3 install adafruit-blinka==5.13.1
 yes | sudo pip3 install adafruit-CircuitPython-BusDevice==5.0.4
+yes | sudo pip3 install spidev

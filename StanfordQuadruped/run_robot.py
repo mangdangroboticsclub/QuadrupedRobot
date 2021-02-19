@@ -4,10 +4,12 @@ import threading
 import time
 
 import numpy as np
+from PIL import Image
 
 sys.path.append("/home/ubuntu/Robotics/QuadrupedRobot")
 sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("/home/ubuntu/Robotics/QuadrupedRobot") for name in dirs])
 from Mangdang.IMU.IMU import IMU
+from Mangdang.LCD.ST7789 import ST7789
 from src.Controller import Controller
 from src.JoystickInterface import JoystickInterface
 from src.State import State
@@ -40,6 +42,13 @@ def main():
     hardware_interface = HardwareInterface()
 
     # Create imu handle
+
+    disp = ST7789()
+    disp.begin()
+    disp.clear()
+    image=Image.open("/home/ubuntu/Robotics/QuadrupedRobot/Mangdang/LCD/cartoons/logo.png")
+    image.resize((320,240))
+    disp.display(image)
 
     if use_IMU:
         imu = IMU()
@@ -82,6 +91,9 @@ def main():
             time.sleep(0.1)
         print("Robot activated.")
         joystick_interface.set_color(config.ps4_color)
+        image=Image.open("/home/ubuntu/Robotics/QuadrupedRobot/Mangdang/LCD/cartoons/shy.png")
+        image.resize((320,240))
+        disp.display(image)
 
         while True:
             now = time.time()
@@ -93,6 +105,9 @@ def main():
             command = joystick_interface.get_command(state)
             if command.activate_event == 1:
                 print("Deactivating Robot")
+                image=Image.open("/home/ubuntu/Robotics/QuadrupedRobot/Mangdang/LCD/cartoons/cry.png")
+                image.resize((320,240))
+                disp.display(image)
                 break
 
             # Read imu data. Orientation will be None if no data was available
