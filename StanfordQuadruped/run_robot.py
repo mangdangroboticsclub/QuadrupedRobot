@@ -37,6 +37,8 @@ def main():
     """
     use_IMU = False
 
+    time.sleep(5.0)
+
     # Create config
     config = Configuration()
     hardware_interface = HardwareInterface()
