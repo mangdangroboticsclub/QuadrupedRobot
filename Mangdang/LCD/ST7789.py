@@ -2,15 +2,19 @@
 import numbers
 import time
 import numpy as np
+import sys
+import os
 
 from PIL import Image
 from PIL import ImageDraw
 
+sys.path.append("/home/ubuntu/Robotics/QuadrupedRobot")
+sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("/home/ubuntu/Robotics/QuadrupedRobot") for name in dirs])
 import Mangdang.Adafruit_GPIO as GPIO
 import Mangdang.Adafruit_GPIO.SPI as SPI
 from Mangdang.LCD.gif import AnimatedGif
 
-SPI_CLOCK_HZ = 40000000 # 40 MHz
+SPI_CLOCK_HZ = 31200000 # 31.2 MHz
 
 # Constants for interacting with display registers.
 ST7789_TFTWIDTH    = 320
@@ -373,32 +377,3 @@ class ST7789(object):
     def draw(self):
         """Return a PIL ImageDraw instance for 2D drawing on the image buffer."""
         return ImageDraw.Draw(self.buffer)
-
-    def displayLOGO(self,disp):
-        image = Image.open('/home/pi/StanfordQuadruped/BSP/Cartoons/logo.png')
-        image = image.resize((320, 240))
-        disp.display(image)
-
-
-
-# disp = ST7789()
-# disp.begin()
-#
-# # Clear display.
-# disp.clear()
-#
-# # image = Image.open('/home/pi/StanfordQuadruped/src/LCD/cat.jpg')
-# #
-# # # Resize the image and rotate it so it's 240x320 pixels.
-# # image = image.rotate(90).resize((240, 320))
-# #
-# # # Draw the image on the display hardware.
-# # print('Drawing image')
-# # disp.display(image)
-#
-#
-# image1 = Image.new("RGB", (disp.width, disp.height), "PURPLE")
-# draw = ImageDraw.Draw(image1)
-# disp.display(image1)
-#
-# gif_player = AnimatedGif(disp, width=320, height=240, folder=".")

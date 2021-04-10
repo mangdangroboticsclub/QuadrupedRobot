@@ -29,3 +29,8 @@ yes | sudo pip3 install RPi.GPIO
 yes | sudo pip3 install adafruit-blinka==5.13.1
 yes | sudo pip3 install adafruit-CircuitPython-BusDevice==5.0.4
 yes | sudo pip3 install spidev
+
+#The WA for Pillow lib in raspberry ubuntu 18.04
+#yes | pip3 install -i Pillow==5.4.1
+sudo rm /usr/lib/python3/dist-packages/PIL/ImageOps.py -f
+sudo cp ImageOps.py  /usr/lib/python3/dist-packages/PIL/ImageOps.py -f

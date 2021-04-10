@@ -1,6 +1,7 @@
 import os
 import time
-from PIL import Image, ImageOps
+from PIL import Image
+from PIL import ImageOps
 
 class Frame:
     def __init__(self, duration=0):
@@ -15,6 +16,7 @@ class AnimatedGif:
         self._duration = 0
         self._gif_files = []
         self._frames = []
+        self._gif_folder  = folder
  
         if width is not None:
             self._width = width
@@ -27,7 +29,7 @@ class AnimatedGif:
         self.display = display
         if folder is not None:
             self.load_files(folder)
-            self.run()
+            self.preload()
  
     def advance(self):
         self._index = (self._index + 1) % len(self._gif_files)
@@ -38,19 +40,19 @@ class AnimatedGif:
     def load_files(self, folder):
         gif_files = [f for f in os.listdir(folder) if f.endswith(".gif")]
         for gif_file in gif_files:
-            image = Image.open(gif_file)
+            image = Image.open(folder + gif_file)
             # Only add animated Gifs
             if image.is_animated:
                 self._gif_files.append(gif_file)
  
-        print("Found", self._gif_files)
+        #print("Found", self._gif_files)
         if not self._gif_files:
             print("No Gif files found in current folder")
             exit()  # pylint: disable=consider-using-sys-exit
  
     def preload(self):
-        image = Image.open(self._gif_files[self._index])
-        print("Loading {}...".format(self._gif_files[self._index]))
+        image = Image.open(self._gif_folder + self._gif_files[self._index])
+        #print("Loading {}...".format(self._gif_files[self._index]))
         if "duration" in image.info:
             self._duration = image.info["duration"]
         else:
@@ -78,23 +80,21 @@ class AnimatedGif:
             self._frames.append(frame_object)
  
     def play(self):
-        self.preload()
- 
         # Check if we have loaded any files first
         if not self._gif_files:
             print("There are no Gif Images loaded to Play")
             return False
-        while True:
-            for frame_object in self._frames:
-                start_time = time.time()
-                self.display.display(frame_object.image)
-                while time.time() < (start_time + frame_object.duration / 1000):
-                    pass
+        #while True:
+        for frame_object in self._frames:
+            start_time = time.time()
+            self.display.display(frame_object.image)
+            while time.time() < (start_time + frame_object.duration / 1000):
+                   pass
  
-            if self._loop == 1:
-                return True
-            if self._loop > 0:
-                self._loop -= 1
+        if self._loop == 1:
+             return True
+        if self._loop > 0:
+            self._loop -= 1
  
     def run(self):
         while True:
