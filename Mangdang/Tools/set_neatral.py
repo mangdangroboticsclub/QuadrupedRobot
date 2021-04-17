@@ -25,9 +25,9 @@ def main():
     print("pwm 1 setting pwm off parameter " , pulsewidth_neutral);
     pwm.set_pwm(1, 0, pulsewidth_neutral)
     print("pwm 2 setting pwm off parameter " , int(1000 / 1e6 * pwm_params.freq * pwm_params.range));
-    pwm.set_pwm(2, 0, int(1000 / 1e6 * pwm_params.freq * pwm_params.range))
+    pwm.set_pwm(2, 0, int(500 / 1e6 * pwm_params.freq * pwm_params.range))
     print("pwm 3 setting pwm off parameter " , int(2000 / 1e6 * pwm_params.freq * pwm_params.range));
-    pwm.set_pwm(3, 0, int(2000 / 1e6 * pwm_params.freq * pwm_params.range))
+    pwm.set_pwm(3, 0, int(2500 / 1e6 * pwm_params.freq * pwm_params.range))
     print ("end ...")
 
 main()
