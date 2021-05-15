@@ -2,9 +2,10 @@
 
 import numpy as np
 
-MICROS_PER_RAD = 3.571 * 180.0 / np.pi  # Must be calibrated
+
+MICROS_PER_RAD = 11.111 * 180.0 / np.pi
 NEUTRAL_ANGLE_DEGREES = np.array(
-   [[10, 3, -6, -11],
-   [41, 55, 33, 53],
-   [-57, -27, -54, -34]]
+[[  5.,  2., -5.,  3.],
+ [ 37., 45., 40., 55.],
+ [-28.,-21.,-36.,-39.]]
 )

@@ -33,6 +33,13 @@ function io_init(){
 io_init
 sleep 1
 
+#export pwm channel
+for i in $(seq 0 15)
+do
+	echo $i > /sys/class/pwm/pwmchip0/export
+	echo  4000000 > /sys/class/pwm/pwmchip0/pwm$i/period
+done
+
 # init the Bluetooth
 sudo hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
 sleep 1

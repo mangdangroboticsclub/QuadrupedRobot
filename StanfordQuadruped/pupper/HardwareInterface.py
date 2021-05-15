@@ -10,16 +10,14 @@ import numpy as np
 
 class HardwareInterface:
     def __init__(self):
-        self.pi = PWMController.PCA9685()
         self.pwm_params = PWMParams()
         self.servo_params = ServoParams()
-        initialize_pwm(self.pi, self.pwm_params)
 
     def set_actuator_postions(self, joint_angles):
-        send_servo_commands(self.pi, self.pwm_params, self.servo_params, joint_angles)
+        send_servo_commands(self.pwm_params, self.servo_params, joint_angles)
 
     def set_actuator_position(self, joint_angle, axis, leg):
-        send_servo_command(self.pi, self.pwm_params, self.servo_params, joint_angle, axis, leg)
+        send_servo_command(self.pwm_params, self.servo_params, joint_angle, axis, leg)
 
 
 def pwm_to_duty_cycle(pulsewidth_micros, pwm_params):
@@ -73,16 +71,14 @@ def angle_to_pwm(angle, servo_params, axis_index, leg_index):
 
 
 def angle_to_duty_cycle(angle, pwm_params, servo_params, axis_index, leg_index):
-    return pwm_to_duty_cycle(
-        angle_to_pwm(angle, servo_params, axis_index, leg_index), pwm_params
-    )
+    return int(angle_to_pwm(angle, servo_params, axis_index, leg_index) * 1e3)
 
 
 def initialize_pwm(pi, pwm_params):
     pi.set_pwm_freq(pwm_params.freq)
 
 
-def send_servo_commands(pi, pwm_params, servo_params, joint_angles):
+def send_servo_commands(pwm_params, servo_params, joint_angles):
     for leg_index in range(4):
         for axis_index in range(3):
             duty_cycle = angle_to_duty_cycle(
@@ -92,12 +88,17 @@ def send_servo_commands(pi, pwm_params, servo_params, joint_angles):
                 axis_index,
                 leg_index,
             )
-            pi.set_pwm(pwm_params.pins[axis_index, leg_index], 0, duty_cycle)
+            # write duty_cycle to pwm linux kernel node
+            file_node = "/sys/class/pwm/pwmchip0/pwm" + str(pwm_params.pins[axis_index, leg_index]) + "/duty_cycle"
+            f = open(file_node, "w")
+            f.write(str(duty_cycle))
 
 
-def send_servo_command(pi, pwm_params, servo_params, joint_angle, axis, leg):
+def send_servo_command(pwm_params, servo_params, joint_angle, axis, leg):
     duty_cycle = angle_to_duty_cycle(joint_angle, pwm_params, servo_params, axis, leg)
-    pi.set_pwm(pwm_params.pins[axis, leg], 0, duty_cycle)
+    file_node = "/sys/class/pwm/pwmchip0/pwm" + str(pwm_params.pins[axis, leg]) + "/duty_cycle"
+    f = open(file_node, "w")
+    f.write(str(duty_cycle))
 
 
 def deactivate_servos(pi, pwm_params):

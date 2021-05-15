@@ -131,7 +131,7 @@ def main():
     current_leg = multiprocessing.Array('d', [0, 0, 0])
     lock = multiprocessing.Lock()
     animated_process = Process(target=animated_thr_fun, args=(disp, duration, is_connect, current_leg, lock))
-    animated_process.start()
+    #animated_process.start()
 
     # Create imu handle
     if use_IMU:

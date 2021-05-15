@@ -3,9 +3,10 @@
 # README file for a description of the various configuration files on the boot
 # partition.
 
-dtparam=i2c_arm=on
+dtparam=i2c1
 dtoverlay=i2c3,pins_4_5
 dtoverlay=i2c4,pins_6_7
 dtoverlay=spi0-1cs
+dtoverlay=i2c-pwm-pca9685a
 
 include nobtcfg.txt

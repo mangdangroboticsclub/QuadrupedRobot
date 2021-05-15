@@ -2,6 +2,7 @@
 # Install Mangdang Puppe-Mini
 
 # build and deploy battery monitor deamon and IO configuration
+sudo cp Mangdang/PWMController/i2c-pwm-pca9685a.dtbo /boot/firmware/overlays/
 sudo cp Mangdang/IO_Configuration/syscfg.txt /boot/firmware/ -f
 cd Mangdang/BatteryMonitor/
 cmake .

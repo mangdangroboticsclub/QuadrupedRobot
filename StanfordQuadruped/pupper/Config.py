@@ -8,7 +8,7 @@ class PWMParams:
     def __init__(self):
         self.pins = np.array([[15, 12, 9, 6], [14, 11, 8, 5], [13, 10, 7, 4]])
         self.range = 4096  ## ADC 12 bits
-        self.freq = 150  ## PWM freq
+        self.freq = 250  ## PWM freq
 
 
 class ServoParams:
@@ -68,7 +68,7 @@ class Configuration:
         )
 
         #################### GAIT #######################
-        self.dt = 0.03
+        self.dt = 0.015
         self.num_phases = 4
         self.contact_phases = np.array(
             [[1, 1, 1, 0], [1, 0, 1, 1], [1, 0, 1, 1], [1, 1, 1, 0]]
