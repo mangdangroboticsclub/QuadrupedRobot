@@ -24,7 +24,7 @@ From your desktop / laptop:
 #################################################################
 
 Download Ubuntu server version 64bit image(NOT including desktop). Use `this version <https://drive.google.com/file/d/1dBjgWEJNBan4NsPyrdhViQJymkSypeIp/view?usp=sharing>`_ so everyone is using the same version. Unzip and extract the file. 
-You can also check the version from `ubuntu offical website<https://releases.ubuntu.com/bionic/>`_ 
+You can also check the version from `ubuntu offical website. <https://releases.ubuntu.com/bionic/>`_ 
 
 3. Use `etcher <https://www.balena.io/etcher/>`_ to flash the card. 
 ##########################################################################################
@@ -119,8 +119,8 @@ Run ``sudo bash pre_install.sh``, the pre-install time depends on your network s
     :align: center
 
 Insall the pupper robot program.
-	``cd QuadrupedRobot``
-	``sudo bash install.sh``
+	* ``cd QuadrupedRobot``
+	* ``sudo bash install.sh``
 
 .. image:: ../_static/preInstall.png
     :align: center
