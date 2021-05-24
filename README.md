@@ -31,6 +31,7 @@ Both the stance and swing controllers generate target positions for the feet in 
 The main software improvements from Pupper is our FSN (Full Self-Navigation) system, based on Ubuntu&ROS. We are moving forward to FSN target step by step. The interface is also open, we absolutely welcome people to contribute to the project. If you want to join us and move together with us, please don't hesitate to send us email!(sales@mangdang.net)
 
 ## How to Build 
+To get started, check out the pages linked below on part sourcing and assembly. If you purchase the parts yourself, it’ll run you about $800. However, you can purchase a kit to build the robot from [MangDang](https://www.mangdang.net/Product) for cheaper than what it would cost you to get the parts yourself. 
 - BOM list: https://drive.google.com/file/d/18phJat8GdK5Yq5p4K1ZmfY1-nMf1lQw4/view?usp=sharing
 - Fusion 360 CAD model: https://a360.co/3yo0fu3
 - Assembly Instructions: https://drive.google.com/file/d/12Xbnqv3Rm7TEcjBZVSbVkBVNKNO3IOfm/view?usp=sharing
