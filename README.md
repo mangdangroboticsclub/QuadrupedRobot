@@ -2,7 +2,7 @@
 ![Mini Pupper CC Max Morse](StanfordQuadruped/imgs/MiniPupper.jpg)
 ## Overview
 Mini Pupper is a small quadruped robot that can hop, trot, and run around. We hope that its low cost, simple design and rich functions especiall the potential self navigation system will allow robot enthusiasts in K-12 and beyond to get their hands on fun, dynamic robots.
-This repository hosts the code for Mini Pupper Robot based on Stanford Pupper, Raspberry Pi-based quadruped robots that can trot, walk, and jump. The project is generously supported by [Stanford Student Robotics](http://roboticsclub.stanford.edu/) and [MangDang Technology Co., Limited](https://www.mangdang.net/)
+This repository hosts the code for Mini Pupper Robot based on Stanford Pupper, Raspberry Pi-based quadruped robots that can trot, walk, and jump. The project is generously supported by [Stanford Student Robotics](http://roboticsclub.stanford.edu/) led by [Nathan Kau](https://github.com/stanfordroboticsclub/StanfordQuadruped) and [MangDang Technology Co., Limited](https://www.mangdang.net/)
 
 ![Mini Pupper CC Max Morse](StanfordQuadruped/imgs/MiniPupper2Shells.jpg)
 
