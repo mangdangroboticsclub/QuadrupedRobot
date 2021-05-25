@@ -1,7 +1,7 @@
 # Mini Pupper Quadruped Project
 ![Mini Pupper CC Max Morse](StanfordQuadruped/imgs/MiniPupper.jpg)
 ## Overview
-Mini Pupper is a small quadruped robot that can hop, trot, and run around. We hope that its low cost, simple design and rich functions especiall the potential self navigation system will allow robot enthusiasts in K-12 and beyond to get their hands on fun, dynamic robots.
+Mini Pupper comes from Stanford Pupper led by [Nathan Kau](https://github.com/stanfordroboticsclub/StanfordQuadruped), it is a mini pupper that can hop, trot, and run around. Its low cost, simple design and rich functions especiall the potential self navigation system will allow robot enthusiasts in K-12 and beyond to get their hands on fun, dynamic robots.
 This repository hosts the code for Mini Pupper Robot based on Stanford Pupper, Raspberry Pi-based quadruped robots that can trot, walk, and jump. The project is generously supported by [Stanford Student Robotics](http://roboticsclub.stanford.edu/) led by [Nathan Kau](https://github.com/stanfordroboticsclub/StanfordQuadruped) and [MangDang Technology Co., Limited](https://www.mangdang.net/)
 
 ![Mini Pupper CC Max Morse](StanfordQuadruped/imgs/MiniPupper2Shells.jpg)
@@ -12,6 +12,7 @@ Link to project page: https://github.com/mangdangroboticsclub/QuadrupedRobot/tre
 
 ## How it works basicly
 ![Overview diagram](StanfordQuadruped/imgs/diagram1.jpg)
+This section is copied from [here](https://github.com/stanfordroboticsclub/StanfordQuadruped) wrote by Nathan.
 The main program is ```run_robot.py``` which is located in ```QuadrupedRobot\StanfordQuadruped``` directory. The robot code is run as a loop, with a joystick interface, a controller, and a hardware interface orchestrating the behavior. 
 
 The joystick interface is responsible for reading joystick inputs from a UDP socket and converting them into a generic robot ```command``` type. A separate program, ```joystick.py```, publishes these UDP messages, and is responsible for reading inputs from the controller over bluetooth. The controller does the bulk of the work, switching between states (trot, walk, rest, etc) and generating servo position targets. A detailed model of the controller is shown below. The third component of the code, the hardware interface, converts the position targets from the controller into PWM duty cycles, which it then passes to a Python binding to ```PCA9685```, which then generates PWM signals in software and sends these signals to the motors attached to the Raspberry Pi.
@@ -41,7 +42,7 @@ To get started, check out the pages linked below on part sourcing and assembly. 
 - Robot operation(same with pupper): https://pupper.readthedocs.io/en/latest/guide/operation.html
 
 ## Help
-- Feel free to raise an issue (https://github.com/stanfordroboticsclub/StanfordQuadruped/issues/new/choose)
-- We also have a Google group set up here: https://groups.google.com/forum/#!forum/stanford-quadrupeds
+- Feel free to raise an issue (https://github.com/mangdangroboticsclub/QuadrupedRobot/issues) or send mail to fae@mangdang.net
+- We also have a Google group set up here: https://groups.google.com/g/minipupper
 
 
