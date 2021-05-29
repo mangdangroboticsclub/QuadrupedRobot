@@ -51,7 +51,7 @@ The main software improvements from Pupper is our FSN (Full Self-Navigation) sys
 ## How to Build 
 To get started, check out the pages linked below on part sourcing and assembly.  
 - BOM list: https://drive.google.com/file/d/18phJat8GdK5Yq5p4K1ZmfY1-nMf1lQw4/view?usp=sharing
-- Fusion 360 CAD model: https://a360.co/3yo0fu3
+- Fusion 360 CAD model: https://a360.co/3fS15a1
 - Assembly Instructions: https://drive.google.com/file/d/12Xbnqv3Rm7TEcjBZVSbVkBVNKNO3IOfm/view?usp=sharing
 
 - Software Installation: https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/pupper-mini/Doc/guide/software_installation.rst
