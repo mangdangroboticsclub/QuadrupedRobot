@@ -6,7 +6,10 @@ This repository hosts the code for Mini Pupper Robot based on Stanford Pupper, R
 
 ![Mini Pupper CC Max Morse](StanfordQuadruped/imgs/MiniPupper2Shells.jpg)
 
-Video of Mini Pupper in action: https://youtu.be/NIjodHA78UE(TBD)
+Video of Mini Pupper in action:
+- https://youtu.be/fVB2cYGYmbU
+- https://youtu.be/cRrh5mLGNMc
+- One more thing is coming
 
 Link to project page: https://github.com/mangdangroboticsclub/QuadrupedRobot/tree/pupper-mini
 
