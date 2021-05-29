@@ -10,7 +10,7 @@ This folder is for Mangdang additional code.
 
 2. BatteryMonitor : battery monitor code
 
-3. PWMController : PCA9685  driver interface
+3. PWMController : PCA9685  dtbo
 
 4. Adafruit_GPIO : Third party Adafruit interface
 
@@ -19,3 +19,5 @@ This folder is for Mangdang additional code.
 6. LCD: ST7789-based IPS LCD driver interface
 
 7. Tools: Mangdang tools about
+
+8.Example: the examples for developers
