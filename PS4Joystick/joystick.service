@@ -1,0 +1,11 @@
+[Unit]
+Description=Rover Joystick service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/ubuntu/Robotics/QuadrupedRobot/PS4Joystick/rover_example.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

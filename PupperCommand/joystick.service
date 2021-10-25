@@ -1,0 +1,15 @@
+[Unit]
+Description=Pupper Joystick service
+Requires=rc-local.service
+After=rc-local.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/ubuntu/Robotics/QuadrupedRobot/PupperCommand/joystick.py
+Restart=always
+RestartSec=5
+KillSignal=2
+TimeoutStopSec=10
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
