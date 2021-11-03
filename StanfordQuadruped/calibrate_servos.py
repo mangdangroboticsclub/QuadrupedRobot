@@ -171,10 +171,14 @@ import numpy as np
     with open("pupper/ServoCalibration.py", "w") as f:
         print(preamble, file = f)
         print("MICROS_PER_RAD = {:.3f} * 180.0 / np.pi".format(degrees_to_radians(servo_params.micros_per_rad)), file = f)
-        print("NEUTRAL_ANGLE_DEGREES = np.array(", file = f)
-        print(formatted_matrix_with_required_commas, file = f)
-        print(")", file = f)
 
+    with open("/sys/bus/nvmem/devices/3-00500/nvmem", "w") as nv_f:
+        _tmp = str(servo_params.neutral_angle_degrees)
+        _tmp = _tmp.replace('.' , ',')
+        _tmp = _tmp.replace('[' , '')
+        _tmp = _tmp.replace(']' , '')
+        print(_tmp, file = nv_f)
+        nv_f.close()
 
 def main():
     """Main program

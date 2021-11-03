@@ -7,32 +7,9 @@
 #
 #
 
-IO_MAP=(
-20 0  #gree led
-13 0  #red  led
-16 0  #buzzer
-25 1  #servo 1
-21 1  #servo 2
-)
-
-function io_init(){
-	len=${#IO_MAP[@]}
-	for((i=0;i<len;i+=2))
-	do
-		io=${IO_MAP[i]}
-		val=${IO_MAP[i+1]}
-		echo $io > /sys/class/gpio/export
-		echo out > /sys/class/gpio/gpio$io/direction
-		echo $val > /sys/class/gpio/gpio$io/value
-	done
-}
-
-# init IO
-io_init
-sleep 1
-
 #remove bluebooth cache
 sudo rm /var/lib/bluetooth/* -rf
+sleep 2
 
 #export pwm channel
 for i in $(seq 0 15)
@@ -47,5 +24,3 @@ sleep 1
 sudo hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
 sleep 2
 
-# start battery monitor deamon
-batterymonitor &

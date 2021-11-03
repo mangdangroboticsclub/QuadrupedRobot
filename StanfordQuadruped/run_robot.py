@@ -10,7 +10,6 @@ import multiprocessing
 
 sys.path.append("/home/ubuntu/Robotics/QuadrupedRobot")
 sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk("/home/ubuntu/Robotics/QuadrupedRobot") for name in dirs])
-from Mangdang.IMU.IMU import IMU
 from Mangdang.LCD.ST7789 import ST7789
 from Mangdang.LCD.gif import AnimatedGif
 from src.Controller import Controller
@@ -22,22 +21,11 @@ from pupper.HardwareInterface import HardwareInterface
 from pupper.Config import Configuration
 from pupper.Kinematics import four_legs_inverse_kinematics
 
-quat_orientation = np.array([1, 0, 0, 0])  # IMU orientation data (Quaternions)
+quat_orientation = np.array([1, 0, 0, 0])
 
 cartoons_folder = "/home/ubuntu/Robotics/QuadrupedRobot/Mangdang/LCD/cartoons/"
 current_show = ""
 disp = ST7789()
-
-def IMU_read(use_IMU, imu):
-    """IMU data read program
-    """
-    global quat_orientation
-    if use_IMU:
-        while True:
-            quat_orientation = imu.read_orientation()
-            time.sleep(0.01)
-    else:
-        quat_orientation = np.array([1, 0, 0, 0])
 
 def pic_show(disp, pic_name, _lock):
     """ Show the specify picture
@@ -110,10 +98,8 @@ def cmd_dump(cmd):
 def main():
     """Main program
     """
-    use_IMU = False
-
-    # sleep 2.5s to wait for booting up complete
-    time.sleep(2.5)
+    # sleep 4.5s to wait for booting up complete
+    time.sleep(4.5)
 
     # Create config
     config = Configuration()
@@ -137,18 +123,6 @@ def main():
     
     #Create movement group scheme
     movement_ctl = MovementScheme(MovementLib)
-    # Create imu handle
-    if use_IMU:
-        imu = IMU()
-        time.sleep(0.1)
-        imu.begin()
-        time.sleep(0.1)
-        # Startup the IMU data reading thread
-        try:
-            _imuThread = threading.Thread(target=IMU_read, args=(use_IMU, imu,))
-            _imuThread.start()
-        except:
-            print("Error: IMU thread could not startup!!!")
 
     # Create controller and user input handles
     controller = Controller(
@@ -200,10 +174,7 @@ def main():
                 pic_show(disp, "notconnect.png", lock)
                 print("Deactivating Robot")
                 break
-
-            # Read imu data. Orientation will be None if no data was available
             state.quat_orientation = quat_orientation
-            
             # movement scheme
             movement_switch = command.dance_switch_event
             gait_state = command.trot_event  

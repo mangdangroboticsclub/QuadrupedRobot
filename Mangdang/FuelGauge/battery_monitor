@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#
+# Copyright (c) 2021, Mangdang Technology Co., Limited
+#
+
+
+IO_MAP=(
+20 0  #red led
+13 0  #green  led
+16 0  #buzzer
+25 1  #servo 1
+21 1  #servo 2
+)
+
+function io_init(){
+	len=${#IO_MAP[@]}
+	for((i=0;i<len;i+=2))
+	do
+		io=${IO_MAP[i]}
+		val=${IO_MAP[i+1]}
+		echo $io > /sys/class/gpio/export
+		echo out > /sys/class/gpio/gpio$io/direction
+		echo $val > /sys/class/gpio/gpio$io/value
+	done
+}
+
+# init IO
+io_init
+sleep 1
+
+#Power monitor
+while true
+do
+	current_voltage=`cat /sys/class/power_supply/max1720x_battery/voltage_now`
+	if [ $current_voltage -le 6400 ]; then
+		echo 1 > /sys/class/gpio/gpio16/value
+		echo 1 > /sys/class/gpio/gpio20/value
+		echo 0 > /sys/class/gpio/gpio13/value
+	else
+		echo 0 > /sys/class/gpio/gpio16/value
+		echo 0 > /sys/class/gpio/gpio20/value
+		echo 1 > /sys/class/gpio/gpio13/value
+	fi
+	sleep 8
+done

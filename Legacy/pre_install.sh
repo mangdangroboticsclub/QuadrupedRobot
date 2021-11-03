@@ -11,7 +11,6 @@ sudo apt-get install -y libsdl-ttf2.0-0
 sudo apt-get install -y libatlas-base-dev
 sudo apt-get install -y libhdf5-dev
 sudo apt-get install -y python3-pip
-sudo apt-get install -y cmake
 sudo apt-get install -y i2c-tools
 sudo apt-get install -y python
 
