@@ -100,7 +100,6 @@ def calibrate_angle_offset(hardware_interface):
     # Found K value of (11.4)
     print("The scaling constant for your servo represents how much you have to increase\nthe pwm pulse width (in microseconds) to rotate the servo output 1 degree.")
     print("This value is currently set to: {:.3f}".format(degrees_to_radians(hardware_interface.servo_params.micros_per_rad)))
-    print("For newer CLS6336 and CLS6327 servos the value should be 11.333.")
     ks = input("Press <Enter> to keep the current value, or enter a new value: ")
     if ks != '':
         k = float(ks)
