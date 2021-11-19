@@ -1,0 +1,9 @@
+[submodule "StanfordQuadruped"]
+	path = StanfordQuadruped
+	url = git@github.com:kodie-artner/StanfordQuadruped.git
+[submodule "PS4Joystick"]
+	path = PS4Joystick
+	url = git@github.com:kodie-artner/PS4Joystick.git
+[submodule "UDPComms"]
+	path = UDPComms
+	url = git@github.com:kodie-artner/UDPComms.git
