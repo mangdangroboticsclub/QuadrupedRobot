@@ -19,8 +19,7 @@ do
 done
 
 # init the Bluetooth
-sudo hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
-sleep 1
-sudo hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+sudo hciattach /dev/ttyAMA0 bcm43xx 230400 noflow -
+sleep 3
+sudo hciattach /dev/ttyAMA0 bcm43xx 230400 noflow -
 sleep 2
-
