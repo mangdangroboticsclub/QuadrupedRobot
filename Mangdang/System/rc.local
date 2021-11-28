@@ -18,8 +18,8 @@ do
 	echo  4000000 > /sys/class/pwm/pwmchip0/pwm$i/period
 done
 
-# init the Bluetooth
-sudo hciattach /dev/ttyAMA0 bcm43xx 230400 noflow -
-sleep 3
-sudo hciattach /dev/ttyAMA0 bcm43xx 230400 noflow -
+#init the Bluetooth
+sudo hciattach /dev/ttyAMA0 bcm43xx 115200 noflow -
+sleep 8
+sudo hciattach /dev/ttyAMA0 bcm43xx 115200 noflow -
 sleep 2
