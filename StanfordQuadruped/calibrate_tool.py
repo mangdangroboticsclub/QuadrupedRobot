@@ -92,6 +92,7 @@ class CalibrationTool:
         self.ServoStandardLAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
         self.ServoNeutralLAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
         self.NocalibrationServoAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
+        self.CalibrationServoAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
         
         #build main window
         self.MainWindow = tk.Tk()
@@ -156,9 +157,11 @@ class CalibrationTool:
             matrix = np.array([[-9, 9, 12, 15], [35, 35, 60, 35], [-30, -27, -22, -48]])
             self.Matrix_EEPROM = matrix
         #update
+        
         for i in range(3):
             for j in range(4):
                 self.NocalibrationServoAngle[i][j] = self.Matrix_EEPROM[i,j]
+                self.CalibrationServoAngle[i][j] = self.Matrix_EEPROM[i,j]
     
         return True
         
@@ -233,7 +236,7 @@ class CalibrationTool:
                 angle[i][j] = self.ServoStandardLAngle[i][j] - value[i][j] +MainWindow.NocalibrationServoAngle[i][j]
         self.updateCalibrationMatrix(angle)
         self.writeCalibrationFile()
-        
+       
         print('******** Angle Matrix ********')
         print(angle[0])
         print(angle[1])
@@ -263,10 +266,11 @@ def updateServoValue(MainWindow,servo):
         
         #control servo
         joint_angles = np.zeros((3, 4))
+        joint_angles2 = np.zeros((3, 4))
         for i in range(3):
             for j in range(4):
-                joint_angles[i,j] = (value[i][j] - (MainWindow.NocalibrationServoAngle[i][j] - MainWindow.Matrix_EEPROM[i,j]))*0.01745
-
+                joint_angles[i,j] = (value[i][j] - (MainWindow.NocalibrationServoAngle[i][j] - MainWindow.CalibrationServoAngle[i][j]))*0.01745
+            
         servo.set_actuator_postions(joint_angles)
         time.sleep(0.01)
 
