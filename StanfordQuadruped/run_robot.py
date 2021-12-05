@@ -99,7 +99,7 @@ def main():
     """Main program
     """
     # sleep 4.5s to wait for booting up complete
-    time.sleep(4.5)
+    time.sleep(2.5)
 
     # Create config
     config = Configuration()

@@ -14,6 +14,7 @@ sudo apt-get install -y python3-pip
 sudo apt-get install -y i2c-tools
 sudo apt-get install -y python
 sudo apt-get install -y python3-tk
+sudo apt-get install -y mpg123
 
 #Libraries of Python3
 yes | sudo pip3 install Cython

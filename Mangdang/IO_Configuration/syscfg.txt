@@ -11,6 +11,6 @@ dtoverlay=i2c-pwm-pca9685a
 dtoverlay=disable-wifi
 dtoverlay=gpio-fan
 dtparam=audio=on
-dtoverlay=audremap, pins_18_19
+dtoverlay=audremap,pins_18_19
 
 include nobtcfg.txt

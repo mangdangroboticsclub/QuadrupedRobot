@@ -169,7 +169,7 @@ class ST7789(object):
         if self._rst is not None:
             self._gpio.setup(self._rst, GPIO.OUT)
         # Turn on the backlight LED
-        # self._gpio.setup(led, GPIO.OUT)
+        self._gpio.setup(self._led, GPIO.OUT)
 
         # Set SPI to mode 0, MSB first.
         self._spi.set_mode(SPI_MODE)
@@ -310,8 +310,7 @@ class ST7789(object):
         self.command(0x21)
         self.command(0x29)
         time.sleep(0.100) # 100 ms
-
-        self._gpio.setup(self._led, GPIO.HIGH)
+        self._gpio.set_high(self._led)
 
     def begin(self):
         """Initialize the display.  Should be called once before other calls that

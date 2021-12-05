@@ -4,11 +4,9 @@
 # Copyright (c) 2021, Mangdang Technology Co., Limited
 #
 
-
 IO_MAP=(
-20 0  #red led
-13 0  #green  led
-16 0  #buzzer
+20 0  #green led
+13 0  #red led
 25 1  #servo 1
 21 1  #servo 2
 )
@@ -25,22 +23,27 @@ function io_init(){
 	done
 }
 
-# init IO
+#init IO
 io_init
 sleep 1
+
+#sudo play low_power.mp3
+#su ubuntu -l -c "mpg123 /home/ubuntu/Music/power_on.mp3"
 
 #Power monitor
 while true
 do
 	current_voltage=`cat /sys/class/power_supply/max1720x_battery/voltage_now`
-	if [ $current_voltage -le 6400 ]; then
-		echo 1 > /sys/class/gpio/gpio16/value
-		echo 1 > /sys/class/gpio/gpio20/value
-		echo 0 > /sys/class/gpio/gpio13/value
-	else
-		echo 0 > /sys/class/gpio/gpio16/value
-		echo 0 > /sys/class/gpio/gpio20/value
+	if [ $current_voltage -le 6500 ]; then
+		echo 0 > /sys/class/gpio/gpio25/value
+		echo 0 > /sys/class/gpio/gpio21/value
 		echo 1 > /sys/class/gpio/gpio13/value
+		echo 0 > /sys/class/gpio/gpio20/value
+		su ubuntu -l -c "mpg123 /home/ubuntu/Music/low_power.mp3"
+
+	else
+		echo 0 > /sys/class/gpio/gpio13/value
+		echo 1 > /sys/class/gpio/gpio20/value
 	fi
 	sleep 8
 done
