@@ -24,4 +24,4 @@ sleep 8
 sudo hciattach /dev/ttyAMA0 bcm43xx 115200 noflow -
 sleep 2
 
-su ubuntu -l -c "mpg123 /home/ubuntu/Music/power_on.mp3"
+su ubuntu -l -c "mpg123 /home/ubuntu/Music/power_on.mp3" &
