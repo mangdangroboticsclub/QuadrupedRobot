@@ -15,6 +15,7 @@ class JoystickInterface:
         self.previous_state = BehaviorState.REST
         self.previous_hop_toggle = 0
         self.previous_activate_toggle = 0
+        self.previous_dance_activate_toggle = 0
 
         self.previous_dance_switch_toggle = 0
         self.previous_gait_switch_toggle = 0
@@ -37,6 +38,9 @@ class JoystickInterface:
             # Check if requesting a state transition to hopping, from trotting or resting
             hop_toggle = msg["x"]
             command.hop_event = (hop_toggle == 1 and self.previous_hop_toggle == 0)
+            
+            dance_activate_toggle = msg["circle"]
+            command.dance_activate_event = (dance_activate_toggle == 1 and self.previous_dance_activate_toggle == 0)
 
             activate_toggle = msg["L1"]
             command.activate_event = (activate_toggle == 1 and self.previous_activate_toggle == 0)
@@ -51,6 +55,7 @@ class JoystickInterface:
             self.previous_gait_toggle = gait_toggle
             self.previous_hop_toggle = hop_toggle
             self.previous_activate_toggle = activate_toggle
+            self.previous_dance_activate_toggle = dance_activate_toggle
 
             self.previous_dance_switch_toggle = dance_toggle
             self.previous_gait_switch_toggle = gait_switch_toggle

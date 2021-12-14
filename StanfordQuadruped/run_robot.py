@@ -98,6 +98,9 @@ def cmd_dump(cmd):
 def main():
     """Main program
     """
+    # sleep 4.5s to wait for booting up complete
+    time.sleep(4.5)
+
     # Create config
     config = Configuration()
     hardware_interface = HardwareInterface()
@@ -175,8 +178,9 @@ def main():
             # movement scheme
             movement_switch = command.dance_switch_event
             gait_state = command.trot_event  
+            dance_state = command.dance_activate_event 
 
-            if gait_state == True:                # if triger tort event, reset the movement number to 0
+            if gait_state == True or dance_state == True:       # if triger tort event, reset the movement number to 0
                 movement_ctl.resetMovementNumber()
             movement_ctl.runMovementScheme(movement_switch)
 
