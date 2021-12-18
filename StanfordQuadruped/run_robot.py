@@ -98,9 +98,6 @@ def cmd_dump(cmd):
 def main():
     """Main program
     """
-    # sleep 4.5s to wait for booting up complete
-    time.sleep(4.5)
-
     # Create config
     config = Configuration()
     hardware_interface = HardwareInterface()
@@ -120,7 +117,7 @@ def main():
     lock = multiprocessing.Lock()
     animated_process = Process(target=animated_thr_fun, args=(disp, duration, is_connect, current_leg, lock))
     #animated_process.start()
-    
+
     #Create movement group scheme
     movement_ctl = MovementScheme(MovementLib)
 
@@ -177,8 +174,8 @@ def main():
             state.quat_orientation = quat_orientation
             # movement scheme
             movement_switch = command.dance_switch_event
-            gait_state = command.trot_event  
-            dance_state = command.dance_activate_event 
+            gait_state = command.trot_event
+            dance_state = command.dance_activate_event
 
             if gait_state == True or dance_state == True:       # if triger tort event, reset the movement number to 0
                 movement_ctl.resetMovementNumber()
@@ -186,7 +183,7 @@ def main():
 
             food_location = movement_ctl.getMovemenLegsLocation()
             attitude_location = movement_ctl.getMovemenAttitudeLocation()
-  
+
             controller.run(state,command,food_location,attitude_location)
 
             # Update the pwm widths going to the servos
