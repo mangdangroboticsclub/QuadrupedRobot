@@ -1,5 +1,6 @@
 
 import tkinter as tk
+import tkinter.messagebox
 from tkinter import *
 import _thread
 import time
@@ -236,7 +237,11 @@ class CalibrationTool:
                 angle[i][j] = self.ServoStandardLAngle[i][j] - value[i][j] +MainWindow.NocalibrationServoAngle[i][j]
         self.updateCalibrationMatrix(angle)
         self.writeCalibrationFile()
-       
+        tk.messagebox.showinfo('Info:','****** Angle Matrix ******\n'
+                                        +str(angle[0])+'\n'
+                                        +str(angle[1])+'\n'
+                                        +str(angle[2])+'\n'
+                                        +'****************************')
         print('******** Angle Matrix ********')
         print(angle[0])
         print(angle[1])
