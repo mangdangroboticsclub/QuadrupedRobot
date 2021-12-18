@@ -5,8 +5,6 @@
 #
 
 IO_MAP=(
-20 0  #green led
-13 0  #red led
 25 1  #servo 1
 21 1  #servo 2
 )
@@ -27,9 +25,6 @@ function io_init(){
 io_init
 sleep 1
 
-#sudo play low_power.mp3
-#su ubuntu -l -c "mpg123 /home/ubuntu/Music/power_on.mp3"
-
 #Power monitor
 while true
 do
@@ -37,13 +32,7 @@ do
 	if [ $current_voltage -le 6500 ]; then
 		echo 0 > /sys/class/gpio/gpio25/value
 		echo 0 > /sys/class/gpio/gpio21/value
-		echo 1 > /sys/class/gpio/gpio13/value
-		echo 0 > /sys/class/gpio/gpio20/value
 		su ubuntu -l -c "mpg123 /home/ubuntu/Music/low_power.mp3"
-
-	else
-		echo 0 > /sys/class/gpio/gpio13/value
-		echo 1 > /sys/class/gpio/gpio20/value
 	fi
 	sleep 8
 done
