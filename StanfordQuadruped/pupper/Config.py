@@ -18,7 +18,7 @@ class ServoParams:
 
         # The neutral angle of the joint relative to the modeled zero-angle in degrees, for each joint
         try:
-            with open("/sys/bus/nvmem/devices/3-00500/nvmem", "rb") as nv_f:
+            with open("/sys/bus/nvmem/devices/3-00501/nvmem", "rb") as nv_f:
                 arr1 = np.array(eval(nv_f.readline()))
                 arr2 = np.array(eval(nv_f.readline()))
                 matrix = np.append(arr1, arr2)

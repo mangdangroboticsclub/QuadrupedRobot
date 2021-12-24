@@ -10,3 +10,4 @@ sudo systemctl enable robot
 sudo systemctl start robot
 
 sudo mv CalibrationTool.desktop /home/ubuntu/Desktop
+sudo chmod a+x /home/ubuntu/Desktop/CalibrationTool.desktop

@@ -1,4 +1,4 @@
-
+import re
 import tkinter as tk
 import tkinter.messagebox
 from tkinter import *
@@ -13,7 +13,7 @@ from pupper.HardwareInterface import HardwareInterface
 loacl_path = os.getcwd()
 
 ServoMultipliers = np.array([[1, 1, -1, -1], [-1, 1, -1, 1], [-1, 1, -1, 1]])
-ServoCalibrationFilePath = '/sys/bus/nvmem/devices/3-00500/nvmem'
+ServoCalibrationFilePath = '/sys/bus/nvmem/devices/3-00501/nvmem'
 
 class LegPositionScale:
 

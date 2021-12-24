@@ -1,27 +1,19 @@
 #!/bin/bash
 #
-# 1.Initialize power switch and alarm units
-# 2.start battery moniter daemon
+# 1.Initialize PWM channels
 #
 # Copyright (c) 2020, Mangdang Technology Co., Limited
 #
 #
 
-#remove bluebooth cache
-sudo rm /var/lib/bluetooth/* -rf
-sleep 2
-
-#export pwm channel
+# export pwm channel
 for i in $(seq 0 15)
 do
 	echo $i > /sys/class/pwm/pwmchip0/export
 	echo  4000000 > /sys/class/pwm/pwmchip0/pwm$i/period
 done
 
-# init the Bluetooth
-sudo hciattach /dev/ttyAMA0 bcm43xx 115200 noflow -
-sleep 8
-sudo hciattach /dev/ttyAMA0 bcm43xx 115200 noflow -
-sleep 2
+# set cpu performance
+#echo performance > /sys/bus/cpu/devices/cpu0/cpufreq/scaling_governor
 
-su ubuntu -l -c "mpg123 /home/ubuntu/Music/power_on.mp3" &
+mpg123 /home/ubuntu/Music/power_on.mp3 &

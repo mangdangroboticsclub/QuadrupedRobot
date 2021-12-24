@@ -15,5 +15,3 @@ dtoverlay=audremap,pins_18_19
 dtoverlay=act-led,activelow=on
 dtparam=pwr_led_trigger=none
 dtparam=pwr_led_activelow=off
-
-include nobtcfg.txt
