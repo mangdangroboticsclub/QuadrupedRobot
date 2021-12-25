@@ -1,5 +1,7 @@
 # The command script to init system for mini pupper 
 set -x
+sudo cp 20auto-upgrades /etc/apt/apt.conf.d/
+sudo apt-get remove ubuntu-release-upgrader-core
 sudo chmod 440 sudoers
 sudo cp sudoers  /etc/
 sudo cp rc.local /etc/

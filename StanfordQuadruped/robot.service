@@ -4,7 +4,7 @@ Requires=joystick.service
 After=joystick.service
 
 [Service]
-ExecStart=/usr/bin/python3 /home/ubuntu/Robotics/QuadrupedRobot/StanfordQuadruped/run_robot.py
+ExecStart=taskset -c 0,1 /usr/bin/python3 /home/ubuntu/Robotics/QuadrupedRobot/StanfordQuadruped/run_robot.py
 KillSignal=2
 TimeoutStopSec=10
 

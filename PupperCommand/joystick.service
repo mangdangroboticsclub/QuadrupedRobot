@@ -4,7 +4,7 @@ Requires=rc-local.service
 After=rc-local.service
 
 [Service]
-ExecStart=/usr/bin/python3 /home/ubuntu/Robotics/QuadrupedRobot/PupperCommand/joystick.py
+ExecStart=taskset -c 2,3 /usr/bin/python3 /home/ubuntu/Robotics/QuadrupedRobot/PupperCommand/joystick.py
 Restart=always
 RestartSec=5
 KillSignal=2

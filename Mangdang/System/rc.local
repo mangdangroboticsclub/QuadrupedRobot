@@ -14,6 +14,6 @@ do
 done
 
 # set cpu performance
-#echo performance > /sys/bus/cpu/devices/cpu0/cpufreq/scaling_governor
+echo performance > /sys/bus/cpu/devices/cpu0/cpufreq/scaling_governor
 
 mpg123 /home/ubuntu/Music/power_on.mp3 &
