@@ -181,8 +181,6 @@ class CalibrationTool:
         for i in range(3):
             for j in range(4):
                 buf_matrix[i,j]= self.Matrix_EEPROM[i,j]
-        print('out')
-        print(buf_matrix)
 
         # Format array object string for np.array
         p1 = re.compile("([0-9]\.) ( *)") # pattern to replace the space that follows each number with a comma
@@ -235,18 +233,33 @@ class CalibrationTool:
         for i in range(3):
             for j in range(4):
                 angle[i][j] = self.ServoStandardLAngle[i][j] - value[i][j] +MainWindow.NocalibrationServoAngle[i][j]
-        self.updateCalibrationMatrix(angle)
-        self.writeCalibrationFile()
-        tk.messagebox.showinfo('Info:','****** Angle Matrix ******\n'
+        print('rrr',angle)
+        # limit angle
+        for i in range(3):
+            for j in range(4):
+                if angle[i][j] > 90:
+                    angle[i][j] = 90
+                elif angle[i][j] < -90:
+                    angle[i][j] = -90
+        
+        # popup message box 
+        result = tk.messagebox.askquestion('Info:','****** Angle Matrix ******\n'
                                         +str(angle[0])+'\n'
                                         +str(angle[1])+'\n'
                                         +str(angle[2])+'\n'
-                                        +'****************************')
-        print('******** Angle Matrix ********')
-        print(angle[0])
-        print(angle[1])
-        print(angle[2])
-        print('******************************')
+                                        +'****************************\n'
+                                        +'      Update Matrix?')
+        
+        # update matrix
+        if result == 'yes':
+            self.updateCalibrationMatrix(angle)
+            self.writeCalibrationFile()   
+                            
+            print('******** Angle Matrix ********')
+            print(angle[0])
+            print(angle[1])
+            print(angle[2])
+            print('******************************')
         
         return True
     
