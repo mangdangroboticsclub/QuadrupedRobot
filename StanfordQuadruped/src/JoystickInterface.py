@@ -41,6 +41,9 @@ class JoystickInterface:
             
             dance_activate_toggle = msg["circle"]
             command.dance_activate_event = (dance_activate_toggle == 1 and self.previous_dance_activate_toggle == 0)
+            
+            shutdown_toggle = msg["triangle"]
+            command.shutdown_signal = shutdown_toggle
 
             activate_toggle = msg["L1"]
             command.activate_event = (activate_toggle == 1 and self.previous_activate_toggle == 0)

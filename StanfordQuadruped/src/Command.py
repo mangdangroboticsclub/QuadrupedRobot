@@ -20,4 +20,6 @@ class Command:
 
         self.dance_switch_event = False
         self.gait_switch_event = False
+        
+        self.shutdown_signal = False
 
