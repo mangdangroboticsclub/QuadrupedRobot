@@ -109,7 +109,7 @@ class CalibrationTool:
         self.Title.place(x=140,y=15)
         
         #init robot image
-        self.photo = tk.PhotoImage(file= '/home/ubuntu/Robotics/QuadrupedRobot/StanfordQuadruped/imgs/MiniPupper.gif')
+        self.photo = tk.PhotoImage(file= '/home/ubuntu/Robotics/QuadrupedRobot/StanfordQuadruped/imgs/MiniPupper.Calibration.png')
         self.MainImg = Label(self.MainWindow,image = self.photo)
         self.MainImg.place(x=230,y=60)
 
