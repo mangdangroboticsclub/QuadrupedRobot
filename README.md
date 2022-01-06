@@ -70,22 +70,22 @@ To get started, check out the pages linked below on part sourcing and assembly.
 - Fusion 360 CAD model: https://a360.co/3fS15a1
 - Assembly Instructions
 
-   [Legs Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper/Doc/guide/Assembly.Legs.rst)
+   [Legs Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.Legs.rst)
 
-   [Hips Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper/Doc/guide/Assembly.Hips.rst)
+   [Hips Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.Hips.rst)
 
-   [BodyFrames Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper/Doc/guide/Assembly.BodyFrame.rst)
+   [BodyFrames Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.BodyFrame.rst)
 
-   [FunctionComponents Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper/Doc/guide/Assembly.FunctionComponent.rst)
+   [FunctionComponents Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.FunctionComponent.rst)
 
-   [Covers Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper/Doc/guide/Assembly.Cover.rst)
+   [Covers Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.Cover.rst)
 
-   [Calibration](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper/Doc/guide/Calibration.rst)  [Calibration video](https://youtu.be/oMQS_zwIw40)
+   [Calibration](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Calibration.rst)  [Calibration video](https://youtu.be/oMQS_zwIw40)
 
 
-- [Software Installation](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper/Doc/guide/software_installation.rst) 
+- [Software Installation](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/software_installation.rst) 
 
-- [Robot operation(same with pupper](https://pupper.readthedocs.io/en/latest/guide/operation.html)
+- [Robot operation(same with pupper)](https://pupper.readthedocs.io/en/latest/guide/operation.html)
 
 ## How to Purchase 
 If you purchase the parts yourself one by one, it’ll run you about $800 and more time. However, you can purchase a kit to build the robot from MangDang channel for cheaper and one-stop shopping. 
