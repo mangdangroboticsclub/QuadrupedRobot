@@ -9,8 +9,7 @@ import os
 import numpy as np
 from pupper.HardwareInterface import HardwareInterface
 
-
-loacl_path = os.getcwd()
+ServoCalibrationStandard = [[0,0,0,0],[0,0,0,0],[-90,-90,-90,-90]]
 
 ServoMultipliers = np.array([[1, 1, -1, -1], [-1, 1, -1, 1], [-1, 1, -1, 1]])
 ServoCalibrationFilePath = '/sys/bus/nvmem/devices/3-00501/nvmem'
@@ -39,7 +38,7 @@ class LegPositionScale:
         self.slider2 = Scale(root,from_=-100,to=100,variable = self.Value2,length = 120,orient = HORIZONTAL)
 
         self.label3 = Label(root,text = 'Calf')
-        self.slider3 = Scale(root,from_=-100,to=100,variable = self.Value3,length = 120,orient = HORIZONTAL)
+        self.slider3 = Scale(root,from_=-200,to=0,  variable = self.Value3,length = 120,orient = HORIZONTAL)
 
         
         self.label1.place(x=location_x, y=location_y + 20)
@@ -88,12 +87,12 @@ class CalibrationTool:
 
         
         # calibration data
-        self.Matrix_EEPROM = np.array([[-9, 9, 12, 15], [35, 35, 60, 35], [-30, -27, -22, -48]])
+        self.Matrix_EEPROM = np.array(ServoCalibrationStandard)
      
-        self.ServoStandardLAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
-        self.ServoNeutralLAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
-        self.NocalibrationServoAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
-        self.CalibrationServoAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
+        self.ServoStandardLAngle =     ServoCalibrationStandard
+        self.ServoNeutralLAngle =      ServoCalibrationStandard
+        self.NocalibrationServoAngle = ServoCalibrationStandard
+        self.CalibrationServoAngle =   ServoCalibrationStandard
         
         #build main window
         self.MainWindow = tk.Tk()
@@ -155,7 +154,7 @@ class CalibrationTool:
                 self.Matrix_EEPROM = matrix
                 print("Get nv calibration params: \n" , self.Matrix_EEPROM)
         except:
-            matrix = np.array([[-9, 9, 12, 15], [35, 35, 60, 35], [-30, -27, -22, -48]])
+            matrix = np.array(ServoCalibrationStandard)
             self.Matrix_EEPROM = matrix
         #update
         
@@ -216,7 +215,7 @@ class CalibrationTool:
     def updateButton1Event(self):
 
         #read matrix from file
-        value = [[0,45,-45],[0,45,-45],[0,45,-45],[0,45,-45]]
+        value = [[0,0,-90],[0,0,-90],[0,0,-90],[0,0,-90]]
         for i in range(3):
             for j in range(4):
                 value[j][i] = self.ServoStandardLAngle[i][j]
