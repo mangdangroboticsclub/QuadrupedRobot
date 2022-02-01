@@ -29,4 +29,4 @@ ubuntu	ALL=(ALL:ALL) ALL
 
 # See sudoers(5) for more information on "@include" directives:
 
-@includedir /etc/sudoers.d
+#includedir /etc/sudoers.d
