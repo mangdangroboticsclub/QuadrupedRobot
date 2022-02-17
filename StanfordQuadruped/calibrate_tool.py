@@ -5,6 +5,7 @@ from tkinter import *
 import _thread
 import time
 import os
+import sys
 
 import numpy as np
 from pupper.HardwareInterface import HardwareInterface
@@ -32,10 +33,10 @@ class LegPositionScale:
         self.slider1 = Scale(root,from_=-100,to=100,variable = self.Value1,length = 120,orient = HORIZONTAL)
         
         self.label2 = Label(root,text = 'Thigh')
-        self.slider2 = Scale(root,from_=-100,to=100,variable = self.Value2,length = 120,orient = HORIZONTAL)
+        self.slider2 = Scale(root,from_=-55,to=145,variable = self.Value2,length = 120,orient = HORIZONTAL)
 
         self.label3 = Label(root,text = 'Calf')
-        self.slider3 = Scale(root,from_=-200,to=00,variable = self.Value3,length = 120,orient = HORIZONTAL)
+        self.slider3 = Scale(root,from_=-145,to=55,variable = self.Value3,length = 120,orient = HORIZONTAL)
 
         
         self.label1.place(x=location_x, y=location_y + 20)
@@ -86,10 +87,10 @@ class CalibrationTool:
         # calibration data
         self.Matrix_EEPROM = np.array([[0, 0, 0, 0], [45, 45, 45, 45], [-45, -45, -45, -45]])
      
-        self.ServoStandardLAngle =     [[0,0,0,0],[0,0,0,0],[-90,-90,-90,-90]]
-        self.ServoNeutralLAngle =      [[0,0,0,0],[0,0,0,0],[-90,-90,-90,-90]]
-        self.NocalibrationServoAngle = [[0,0,0,0],[0,0,0,0],[-90,-90,-90,-90]]
-        self.CalibrationServoAngle =   [[0,0,0,0],[0,0,0,0],[-90,-90,-90,-90]]
+        self.ServoStandardLAngle =     [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
+        self.ServoNeutralLAngle =      [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
+        self.NocalibrationServoAngle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
+        self.CalibrationServoAngle =   [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
         
         #build main window
         self.MainWindow = tk.Tk()
@@ -110,11 +111,13 @@ class CalibrationTool:
         self.MainImg.place(x=230,y=60)
 
         #init read update button
-        self.ReadButton = Button(self.MainWindow,text   = ' Reset ',font = ('bold',20),command=self.updateButton1Event)
-        self.UpdateButton = Button(self.MainWindow,text = 'Update',font = ('bold',20),command=self.updateButton2Event)
+        self.ResetButton = Button(self.MainWindow,text   = ' Reset ',font = ('bold',20),command=self.ResetButtonEvent)
+        self.UpdateButton = Button(self.MainWindow,text = 'Update',font = ('bold',20),command=self.updateButtonEvent)
+        self.RestoreButton = Button(self.MainWindow,text   = 'Restore',font = ('bold',7),command=self.RestoreButtonEvent)
 
-        self.ReadButton.place(x=600,y=100)
+        self.ResetButton.place(x=600,y=100)
         self.UpdateButton.place(x=600,y=200)
+        self.RestoreButton.place(x=160,y=80) 
         
         #build 4 legs sliders
         self.Leg1Calibration  = LegPositionScale(self.MainWindow,20,300, 'Leg 1')
@@ -209,7 +212,7 @@ class CalibrationTool:
         
         return value
 
-    def updateButton1Event(self):
+    def ResetButtonEvent(self):
 
         value = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
         for i in range(3):
@@ -220,7 +223,7 @@ class CalibrationTool:
         
         return True
     
-    def updateButton2Event(self):
+    def updateButtonEvent(self):
 
         # update angle matrix 
         value = self.getLegSlidersValue()
@@ -257,7 +260,41 @@ class CalibrationTool:
             print('******************************')
         
         return True
-    
+
+    def RestoreButtonEvent(self):
+
+        # update angle matrix 
+        value = self.getLegSlidersValue()
+        angle = [[0,0,0,0],[45,45,45,45],[-45,-45,-45,-45]]
+        
+        # popup message box 
+        result = tk.messagebox.askquestion('Warning','Are you sure you want to Restore Factory Setting!?')
+        
+        # update matrix
+        if result == 'yes':
+            self.updateCalibrationMatrix(angle)
+            self.writeCalibrationFile()   
+                            
+            print('******** Angle Matrix ********')
+            print(angle[0])
+            print(angle[1])
+            print(angle[2])
+            print('******************************')
+            sys.exit()
+            
+            for i in range(3):
+                for j in range(4):
+                    self.NocalibrationServoAngle[i][j] = angle[i][j]
+                    #self.CalibrationServoAngle[i][j] = angle[i][j]
+            value = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
+            for i in range(3):
+                for j in range(4):
+                    value[j][i] = self.ServoStandardLAngle[i][j]
+            
+        self.setLegSlidersValue(value)
+        
+        return True
+
     def runMainWindow(self):
         
         self.MainWindow.mainloop()
