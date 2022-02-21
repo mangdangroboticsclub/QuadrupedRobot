@@ -8,11 +8,11 @@ Mini Pupper will make robotics easier for schools, homeschool families, enthusia
 
 ROS: support ROS SLAM&Navigation robot dog at low-cost price, endorsed by ROS.
 
-OpenCV: support OpenCV official 3D module.
+OpenCV: support OpenCV official OAK-D-Lite 3D camera module, endorsed by OpenCV.
 
 Open-source: DIY and custom what you want, won a HackadayPrize!
 
-Pi: it’s super expandable.
+Pi: it’s super expandable, endorsed by Raspberry Pi.
 
 ## Background
 You maybe see many demos from Boston Dynamics Spot Mini, and so on, many guys want to own their own robot dog to explore the functions, but the price is too high to accept, and it is not easy to explore the robot dog features.
@@ -56,7 +56,7 @@ The HMI (Human-Machine-Interface) LCD is another wonderful function. Taking Mini
 ![Eye](Doc/imgs/eye.gif)
 
 ## Education Courses
-We are targeting Mini Pupper for education. Education courses are also coming. To make the study of Mini Pupper easy and convenient, the courses will be released step by step, including mechanical, hardware, ROS, SLAM, navigation, AI functions, and so on. If you’ve been searching for an open-sourced consumer-grade quadruped research robot, Mini Pupper is the best platform for you.
+We are targeting Mini Pupper for education. [Education courses](https://mangdang-minipupperdocs.readthedocs-hosted.com/en/latest/index.html) are also coming. To make the study of Mini Pupper easy and convenient, the courses will be released step by step, including mechanical, hardware, ROS, SLAM, navigation, AI functions, and so on. If you’ve been searching for an open-sourced consumer-grade quadruped research robot, Mini Pupper is the best platform for you.
 We are inviting 10 professional hackers worldwide to prepare the courses. It will be unlike anything that you've ever seen before. 
 ![MiniPupper OnlineCourse](Doc/imgs/OnlineCourse.0.25MP.jpg)
 
@@ -67,25 +67,10 @@ The main software improvement from Pupper is our FSN (Full Self-Navigation) syst
 ## How to Build 
 To get started, check out the pages linked below on part sourcing and assembly.  
 - BOM list: https://drive.google.com/file/d/18phJat8GdK5Yq5p4K1ZmfY1-nMf1lQw4/view?usp=sharing
-- Fusion 360 CAD model: https://a360.co/3fS15a1
-- Assembly Instructions
-
-   [Legs Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.Legs.rst)
-
-   [Hips Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.Hips.rst)
-
-   [BodyFrames Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.BodyFrame.rst)
-
-   [FunctionComponents Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.FunctionComponent.rst)
-
-   [Covers Assembly](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Assembly.Cover.rst)
-
-   [Calibration](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/Calibration.rst)  [Calibration video](https://youtu.be/oMQS_zwIw40)
+- Documents: https://mangdang-minipupperdocs.readthedocs-hosted.com/en/latest/index.html
+- Software Installation: https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/software_installation.rst
 
 
-- [Software Installation](https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/software_installation.rst) 
-
-- [Robot operation(same with pupper)](https://pupper.readthedocs.io/en/latest/guide/operation.html)
 
 ## How to Purchase 
 If you purchase the parts yourself one by one, it’ll run you about $800 and more time. However, you can purchase a kit to build the robot from MangDang channel for cheaper and one-stop shopping. 
