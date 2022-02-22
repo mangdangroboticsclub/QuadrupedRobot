@@ -106,7 +106,7 @@ Run ``ssh ubuntu@IP address`` (The default password is ``mangdang``)
     :align: center
 
 Make ``Robotics`` folder and download the source code.
-Run ``git clone -b MiniPupper https://github.com/mangdangroboticsclub/QuadrupedRobot.git``
+Run ``git clone -b MiniPupper_V2 https://github.com/mangdangroboticsclub/QuadrupedRobot.git``
 
 
 .. image:: ../_static/gitclonesourcecode.png
