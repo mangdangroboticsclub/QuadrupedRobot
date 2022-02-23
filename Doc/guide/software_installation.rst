@@ -20,18 +20,18 @@ From your desktop / laptop:
 1. Put the SD card into your desktop / laptop. 
 ###############################################
 
-2. Download this version of Ubuntu 18.04.5 LTS 
+2. Download this version of Ubuntu 21.10 
 #################################################################
 
-Download Ubuntu server version 64bit image(NOT including desktop). Use `this version <https://drive.google.com/file/d/1dBjgWEJNBan4NsPyrdhViQJymkSypeIp/view?usp=sharing>`_ so everyone is using the same version. Unzip and extract the file. 
-You can also check the version from `ubuntu offical website. <https://releases.ubuntu.com/bionic/>`_ 
+Download Ubuntu21.10 server version 64bit image(NOT including desktop). Use `this version <https://drive.google.com/file/d/1JVtjFTKE6FloG3giyMN_VuS0dKt4n2xq/view?usp=sharing>`_ so everyone is using the same version. Unzip and extract the file. 
+You can also check the version from `ubuntu offical website. <https://ubuntu.com/download/raspberry-pi>`_ 
 
 3. Use `etcher <https://www.balena.io/etcher/>`_ to flash the card. 
 ##########################################################################################
 
-* For quick start, you can also download the  `pre-installed image <https://drive.google.com/file/d/16pfS7e765MsS6gidacJCiBaMOjwlPwq-/view?usp=sharing>`_ , (username: ubuntu ,  password: mangdang ) flash it into the card, then skip all the following steps and start to calibarte the Pupper Mini.
+* For quick start, you can also download the  `pre-installed image <https://drive.google.com/file/d/1hgohjpwbL9VGBdQ3Neu987gn56t0q4en/view?usp=sharing>`_ , (username: ubuntu ,  password: mangdang ) flash it into the card, then skip all the following steps and start to calibarte the Pupper Mini.
 
-* If you are using the recommended etcher, this is the start-up menu. Select ubuntu-18.04.5-preinstalled-server-arm64+raspi4.img (file inside zip )and the SD card. 
+* If you are using the recommended etcher, this is the start-up menu. Select ubuntu-21.10-preinstalled-server-arm64+raspi.img (file inside zip )and the SD card. 
 
 .. image:: ../_static/flash1.png
     :align: center
@@ -71,28 +71,13 @@ Run ``$sudo apt install ubuntu-desktop``
 
 * The install time depends on your network speed, probably dozens of minutes. 
 
-Input "Y" to continue.
+Input "Y" to continue, and then input "startx" to boot up desktop at first time.
 
 .. image:: ../_static/installDesktop2.jpg
     :align: center
 
-Input "startx" to boot up desktop at first time.
-
-.. image:: ../_static/installDesktop3.jpg
-    :align: center
-
-.. image:: ../_static/bootupDesktop.jpg
-    :align: center
-
-After initial setting, looks like the below picture.
-
-.. image:: ../_static/bootupDesktop2.jpg
-    :align: center
 
 Reboot it only at first time, and then check the IP address, you can connect it later by SSH.
-
-.. image:: ../_static/bootupDesktop3.jpg
-    :align: center
 
 .. image:: ../_static/bootupDesktop4.jpg
     :align: center
@@ -106,14 +91,14 @@ Run ``ssh ubuntu@IP address`` (The default password is ``mangdang``)
     :align: center
 
 Make ``Robotics`` folder and download the source code.
-Run ``git clone -b MiniPupper https://github.com/mangdangroboticsclub/QuadrupedRobot.git``
+Run ``git clone -b MiniPupper_V2 https://github.com/mangdangroboticsclub/QuadrupedRobot.git``
 
 
 .. image:: ../_static/gitclonesourcecode.png
     :align: center
 
 Install requirements (on the Pi).
-Run ``sudo bash pre_install.sh``, the pre-install time depends on your network speed, maybe dezons of minutes, or several hours.
+Run ``sudo bash Legacy/pre_install.sh``, the pre-install time depends on your network speed, maybe dezons of minutes, or several hours.
 
 .. image:: ../_static/preInstall.png
     :align: center
