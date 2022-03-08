@@ -10,7 +10,14 @@ import sys
 import numpy as np
 from pupper.HardwareInterface import HardwareInterface
 
+###################################################################
+
+OverLoadCurrentMax = 1500000
+OverLoadHoldCounterMax = 100     # almost 3s
+
 ServoCalibrationFilePath = '/sys/bus/nvmem/devices/3-00501/nvmem'
+
+###################################################################
 
 class LegPositionScale:
 
@@ -307,6 +314,36 @@ class CalibrationTool:
         
         return True
 
+OverLoadHoldCounter = 0        
+def OverLoadDetection():
+
+    overload = False
+    global OverLoadHoldCounter
+    
+    r = os.popen("cat /sys/class/power_supply/max1720x_battery/current_now")
+    feedback = str(r.readlines())
+    current_now = int(feedback[3:len(feedback)-4])
+    
+
+    if (current_now > OverLoadCurrentMax):
+        OverLoadHoldCounter = OverLoadHoldCounter + 1
+        if (OverLoadHoldCounter > OverLoadHoldCounterMax): 
+            OverLoadHoldCounter = OverLoadHoldCounterMax      
+            os.popen("echo 0 > /sys/class/gpio/gpio25/value")
+            os.popen("echo 0 > /sys/class/gpio/gpio21/value") 
+            overload = True  
+        else:
+            overload = False                      
+    else:
+        OverLoadHoldCounter = OverLoadHoldCounter - 10
+        if (OverLoadHoldCounter < 0):
+            OverLoadHoldCounter = 0
+            os.popen("echo 1 > /sys/class/gpio/gpio25/value")
+            os.popen("echo 1 > /sys/class/gpio/gpio21/value") 
+            overload = False  
+        
+    return overload
+        
 def updateServoValue(MainWindow,servo):
 
     while MainWindow.Run:
@@ -314,14 +351,19 @@ def updateServoValue(MainWindow,servo):
         #update leg slider value
         value = MainWindow.getLegSlidersValue()
         
-        #control servo
-        joint_angles = np.zeros((3, 4))
-        joint_angles2 = np.zeros((3, 4))
-        for i in range(3):
-            for j in range(4):
-                joint_angles[i,j] = (value[i][j] - (MainWindow.NocalibrationServoAngle[i][j] - MainWindow.CalibrationServoAngle[i][j]))*0.01745
+        # overload detection
+        overload = OverLoadDetection()
+        if overload == True:
+            tk.messagebox.showwarning('Warning','Servos overload, please check !!!') 
+        else: 
+            #control servo
+            joint_angles = np.zeros((3, 4))
+            joint_angles2 = np.zeros((3, 4))
+            for i in range(3):
+                for j in range(4):
+                    joint_angles[i,j] = (value[i][j] - (MainWindow.NocalibrationServoAngle[i][j] - MainWindow.CalibrationServoAngle[i][j]))*0.01745
             
-        servo.set_actuator_postions(joint_angles)
+            servo.set_actuator_postions(joint_angles)
         time.sleep(0.01)
 
 
@@ -329,6 +371,9 @@ def updateServoValue(MainWindow,servo):
 
 ##############################################    
 os.system("sudo systemctl stop robot")
+os.system("echo 1 > /sys/class/gpio/gpio25/value") 
+os.system("echo 1 > /sys/class/gpio/gpio21/value") 
+
 MainWindow = CalibrationTool('MiniPupper Calibration Tool',800,500)
 MainWindow.readCalibrationFile()
 hardware_interface = HardwareInterface()
@@ -341,5 +386,8 @@ except:
 MainWindow.runMainWindow()
 MainWindow.stopMainWindow()
 os.system("sudo systemctl start robot")
+os.system("echo 1 > /sys/class/gpio/gpio25/value") 
+os.system("echo 1 > /sys/class/gpio/gpio21/value") 
+
 
 
