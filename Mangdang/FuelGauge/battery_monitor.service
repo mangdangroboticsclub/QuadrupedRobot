@@ -1,5 +1,7 @@
 [Unit]
 Description=max17205 battery monitor service
+Requires=rc-local.service
+After=rc-local.service
 
 [Service]
 Type=oneshot

@@ -6,6 +6,17 @@
 #
 #
 
+# get hardware version
+echo 27 > /sys/class/gpio/export
+echo in > /sys/class/gpio/gpio27/direction
+hw_version_io=`cat /sys/class/gpio/gpio27/value`
+echo 27 > /sys/class/gpio/unexport
+if [ "$hw_version_io" == "1" ]; then
+	sudo echo "P1" > /home/ubuntu/.hw_version
+else
+	sudo echo "MP" > /home/ubuntu/.hw_version
+fi
+
 # export pwm channel
 for i in $(seq 0 15)
 do

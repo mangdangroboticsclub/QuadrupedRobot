@@ -25,7 +25,14 @@ quat_orientation = np.array([1, 0, 0, 0])
 
 cartoons_folder = "/home/ubuntu/Robotics/QuadrupedRobot/Mangdang/LCD/cartoons/"
 current_show = ""
-disp = ST7789()
+
+with open("/home/ubuntu/.hw_version", "r") as hw_f:
+    hw_version = hw_f.readline()
+
+if hw_version == 'P1\n':
+    disp = ST7789(14, 15, 47)
+else :
+    disp = ST7789(27, 24, 26)
 
 def pic_show(disp, pic_name, _lock):
     """ Show the specify picture

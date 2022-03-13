@@ -141,23 +141,20 @@ def image_to_data(image):
 class ST7789(object):
     """Representation of an ST7789 IPS LCD."""
 
-    def __init__(self):
+    def __init__(self, rst, dc, led):
         """Create an instance of the display using SPI communication.  Must
         provide the GPIO pin number for the D/C pin and the SPI driver.  Can
         optionally provide the GPIO pin number for the reset pin as the rst
         parameter.
         """
-        RST = 27  # Set GPIO pin# 15 (BCM 14) as reset control
-        DC = 24  # Set GPIO pin# 11 (BCM 15) as DATA/command (NOT MOSI!)
-        LED = 26  # Set GPIO pin# 13 (BCM 27) as backlight control
         SPI_PORT = 0
         SPI_DEVICE = 0
         SPI_MODE = 0b11
         SPI_SPEED_HZ = 40000000
         self._spi = SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=SPI_SPEED_HZ)
-        self._rst = RST
-        self._dc = DC
-        self._led = LED
+        self._rst = rst
+        self._dc = dc
+        self._led = led
         self._gpio = None
         self.width = ST7789_TFTWIDTH
         self.height = ST7789_TFTHEIGHT

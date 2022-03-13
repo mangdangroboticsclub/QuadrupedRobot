@@ -16,9 +16,17 @@ class ServoParams:
         self.neutral_position_pwm = 1500  # Middle position
         self.micros_per_rad = MICROS_PER_RAD  # Must be calibrated
 
+        with open("/home/ubuntu/.hw_version", "r") as hw_f:
+            hw_version = hw_f.readline()
+
+        if hw_version == 'P1\n':
+            nv_file = "/home/ubuntu/.nv_fle"
+        else:
+            nv_file = "/sys/bus/nvmem/devices/3-00501/nvmem"
+
         # The neutral angle of the joint relative to the modeled zero-angle in degrees, for each joint
         try:
-            with open("/sys/bus/nvmem/devices/3-00501/nvmem", "rb") as nv_f:
+            with open(nv_file, "rb") as nv_f:
                 arr1 = np.array(eval(nv_f.readline()))
                 arr2 = np.array(eval(nv_f.readline()))
                 matrix = np.append(arr1, arr2)

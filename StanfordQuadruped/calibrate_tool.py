@@ -16,6 +16,9 @@ OverLoadCurrentMax = 1500000
 OverLoadHoldCounterMax = 100     # almost 3s
 
 ServoCalibrationFilePath = '/sys/bus/nvmem/devices/3-00501/nvmem'
+servo1_en = 25
+servo2_en = 21
+hw_version=""
 
 ###################################################################
 
@@ -56,7 +59,6 @@ class LegPositionScale:
         
         self.title.place(x=location_x + 70, y=location_y + delt_y*3)
 
-        
     def setValue(self,value):
 
         self.slider1.set(value[0])
@@ -83,7 +85,7 @@ class CalibrationTool:
         self.Run = True
         self.FileAllLines = []
         
-        
+
         #leg slider value
         self.Leg1SlidersValue = [0,0,0]
         self.Leg2SlidersValue = [0,0,0]
@@ -329,8 +331,8 @@ def OverLoadDetection():
         OverLoadHoldCounter = OverLoadHoldCounter + 1
         if (OverLoadHoldCounter > OverLoadHoldCounterMax): 
             OverLoadHoldCounter = OverLoadHoldCounterMax      
-            os.popen("echo 0 > /sys/class/gpio/gpio25/value")
-            os.popen("echo 0 > /sys/class/gpio/gpio21/value") 
+            os.popen("echo 0 > /sys/class/gpio/gpio"+ str(servo1_en) + "/value")
+            os.popen("echo 0 > /sys/class/gpio/gpio"+ str(servo2_en) + "/value")
             overload = True  
         else:
             overload = False                      
@@ -338,8 +340,8 @@ def OverLoadDetection():
         OverLoadHoldCounter = OverLoadHoldCounter - 10
         if (OverLoadHoldCounter < 0):
             OverLoadHoldCounter = 0
-            os.popen("echo 1 > /sys/class/gpio/gpio25/value")
-            os.popen("echo 1 > /sys/class/gpio/gpio21/value") 
+            os.popen("echo 1 > /sys/class/gpio/gpio" + str(servo1_en) + "/value")
+            os.popen("echo 1 > /sys/class/gpio/gpio" + str(servo2_en) + "/value")
             overload = False  
         
     return overload
@@ -369,10 +371,21 @@ def updateServoValue(MainWindow,servo):
 
 
 
-##############################################    
+##############################################
+with open("/home/ubuntu/.hw_version", "r") as hw_f:
+    hw_version = hw_f.readline()
+
+if hw_version == 'P1\n':
+       ServoCalibrationFilePath = "/home/ubuntu/.nv_fle"
+       servo1_en = 19
+       servo2_en = 26
+else:
+       servo1_en = 25
+       servo2_en = 21
+
 os.system("sudo systemctl stop robot")
-os.system("echo 1 > /sys/class/gpio/gpio25/value") 
-os.system("echo 1 > /sys/class/gpio/gpio21/value") 
+os.system("echo 1 > /sys/class/gpio/gpio" + str(servo1_en) + "/value")
+os.system("echo 1 > /sys/class/gpio/gpio" + str(servo2_en) + "/value")
 
 MainWindow = CalibrationTool('MiniPupper Calibration Tool',800,500)
 MainWindow.readCalibrationFile()
@@ -386,8 +399,5 @@ except:
 MainWindow.runMainWindow()
 MainWindow.stopMainWindow()
 os.system("sudo systemctl start robot")
-os.system("echo 1 > /sys/class/gpio/gpio25/value") 
-os.system("echo 1 > /sys/class/gpio/gpio21/value") 
-
-
-
+os.system("echo 1 > /sys/class/gpio/gpio"+ str(servo1_en) + "/value")
+os.system("echo 1 > /sys/class/gpio/gpio"+ str(servo2_en) + "/value")

@@ -4,13 +4,16 @@
 # partition.
 
 dtparam=i2c1
-dtoverlay=i2c3,pins_4_5
 dtoverlay=i2c4,pins_6_7
 dtoverlay=spi0-1cs
 dtoverlay=i2c-pwm-pca9685a
-dtoverlay=gpio-fan
-dtparam=audio=on
-dtoverlay=audremap,pins_18_19
 dtoverlay=act-led,activelow=on
 dtparam=pwr_led_trigger=none
 dtparam=pwr_led_activelow=off
+
+# For MP devices
+[gpio27=0]
+dtoverlay=gpio-fan
+dtoverlay=i2c3,pins_4_5
+dtparam=audio=on
+dtoverlay=audremap,pins_18_19
