@@ -8,6 +8,9 @@ sudo apt install -y openssh-server
 sudo apt install -y curl
 sudo apt install -y git
 
+#remove upgrader core
+sudo apt-get remove -y ubuntu-release-upgrader-core
+
 #Update time and source
 sudo date -s "$(curl -s --head http://www.baidu.com | grep ^Date: | sed 's/Date: //g')"
 sudo apt-get update
