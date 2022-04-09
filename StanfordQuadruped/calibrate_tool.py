@@ -15,7 +15,7 @@ from pupper.HardwareInterface import HardwareInterface
 OverLoadCurrentMax = 1500000
 OverLoadHoldCounterMax = 100     # almost 3s
 
-ServoCalibrationFilePath = '/sys/bus/nvmem/devices/3-00501/nvmem'
+ServoCalibrationFilePath = '/sys/bus/i2c/devices/3-0050/eeprom'
 servo1_en = 25
 servo2_en = 21
 hw_version=""

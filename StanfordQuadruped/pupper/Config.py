@@ -22,7 +22,7 @@ class ServoParams:
         if hw_version == 'P1\n':
             nv_file = "/home/ubuntu/.nv_fle"
         else:
-            nv_file = "/sys/bus/nvmem/devices/3-00501/nvmem"
+            nv_file = "/sys/bus/i2c/devices/3-0050/eeprom"
 
         # The neutral angle of the joint relative to the modeled zero-angle in degrees, for each joint
         try:
