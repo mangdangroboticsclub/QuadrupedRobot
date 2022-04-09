@@ -8,9 +8,6 @@ sudo apt install -y openssh-server
 sudo apt install -y curl
 sudo apt install -y git
 
-#remove upgrader core
-sudo apt-get remove -y ubuntu-release-upgrader-core
-
 #Update time and source
 sudo date -s "$(curl -s --head http://www.baidu.com | grep ^Date: | sed 's/Date: //g')"
 sudo apt-get update
@@ -42,3 +39,6 @@ yes | sudo pip3 install spidev
 #The WA for Pillow lib in raspberry ubuntu 20.04+
 sudo rm /usr/lib/python3/dist-packages/PIL/ImageOps.py -f
 sudo cp ImageOps.py  /usr/lib/python3/dist-packages/PIL/ImageOps.py -f
+
+#remove upgrader core
+sudo apt-get remove -y ubuntu-release-upgrader-core
