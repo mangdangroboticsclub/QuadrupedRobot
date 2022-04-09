@@ -18,6 +18,10 @@ sudo bash /home/ubuntu/Robotics/QuadrupedRobot/Mangdang/System/install.sh
 cd /home/ubuntu/Robotics/QuadrupedRobot/Mangdang/EEPROM
 sudo bash /home/ubuntu/Robotics/QuadrupedRobot/Mangdang/EEPROM/install.sh
 
+# Install PCA9685 driver
+cd /home/ubuntu/Robotics/QuadrupedRobot/Mangdang/PWMController
+sudo bash /home/ubuntu/Robotics/QuadrupedRobot/Mangdang/PWMController/install.sh
+
 # Install standford robot and UDPComms services
 sudo bash /home/ubuntu/Robotics/QuadrupedRobot/StanfordQuadruped/install.sh
 sudo bash /home/ubuntu/Robotics/QuadrupedRobot/UDPComms/install.sh
