@@ -91,12 +91,12 @@ Get 10%+ discount by PayPal or Stripe​：tell us which kit you want by mail( s
 
 ![Mini Pupper onlineshop](Doc/imgs/onlineshop.png)
 
-- [Kickstarter Crowdfunding Campaign](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit)
-- [Indiegogo Crowdfunding Campaign](https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/)
-- [Makuake Crowdfunding Campaign](https://www.makuake.com/project/mini_pupper/)
+- [Kickstarter Crowdfunding Campaign Link](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit)
+- [Indiegogo Crowdfunding Campaign Link](https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/)
+- [Makuake Crowdfunding Campaign Link](https://www.makuake.com/project/mini_pupper/)
 - Amazon channel: [Amazon US](https://www.amazon.com/s?me=A3V5171RNQ5C18&marketplaceID=ATVPDKIKX0DER) , [Amazon Japan](https://www.amazon.co.jp/s?me=A14LOTMOI42BRX&marketplaceID=A1VC38T7YXB528)
 - [Robotshop channel](https://www.robotshop.com/en/mini-pupper.html)
-- [Mini Pupper Aliexpress](https://www.aliexpress.com/store/911381222?spm=a2g0o.detail.1000007.1.2ed464e6sdYBwy)
+- [Aliexpress channel](https://www.aliexpress.com/store/911381222?spm=a2g0o.detail.1000007.1.2ed464e6sdYBwy)
 - [Taobao channel](https://item.taobao.com/item.htm?spm=a230r.1.14.6.443b6a738ut6AT&id=669862578963&ns=1&abbucket=11#detail)
 
 ## About Stanford Student Robotics
