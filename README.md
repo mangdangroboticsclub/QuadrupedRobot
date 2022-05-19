@@ -1,13 +1,10 @@
 # Mini Pupper - ROS, OpenCV, Open-source, Pi Robot Dog
 Mini Pupper will make robotics easier for schools, homeschool families, enthusiasts and beyond.
 
-ROS: support ROS SLAM&Navigation robot dog at low-cost price, endorsed by ROS.
-
-OpenCV: support OpenCV official OAK-D-Lite 3D camera module, endorsed by OpenCV.
-
-Open-source: DIY and custom what you want, won a HackadayPrize!
-
-Pi: it’s super expandable, endorsed by Raspberry Pi.
+- ROS: support ROS SLAM&Navigation robot dog at low-cost price, endorsed by ROS.
+- OpenCV: support OpenCV official OAK-D-Lite 3D camera module, endorsed by OpenCV.
+- Open-source: DIY and custom what you want, won a HackadayPrize!
+- Raspberry Pi: it’s super expandable, endorsed by Raspberry Pi.
 
 ![Mini Pupper ](Doc/imgs/MiniPupper.png)
 
