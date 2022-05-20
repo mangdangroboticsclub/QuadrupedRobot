@@ -1,4 +1,6 @@
 # Mini Pupper - ROS, OpenCV, Open-source, Pi Robot Dog
+Online channel: [Discord](https://discord.gg/xJdt3dHBVw), [FaceBook](https://www.facebook.com/groups/716473723088464), [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot)
+
 Mini Pupper will make robotics easier for schools, homeschool families, enthusiasts and beyond.
 
 - ROS: support ROS SLAM&Navigation robot dog at low-cost price, endorsed by ROS.
@@ -104,4 +106,4 @@ Founded in 2020, [MangDang Technology Co., Limited](https://www.mangdang.net/) (
 
 We are all dreamers, we look forward to connecting talents worldwide and innovating together to perform splendid times! 
 - For business, you can connect us by mail(sales@mangdang.net).
-- Our online channel: [Discord](https://discord.gg/xJdt3dHBVw), [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot), [FaceBook](https://www.facebook.com/afreez.gan/)
+- Our online channel: [Discord](https://discord.gg/xJdt3dHBVw), [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot), [FaceBook](https://www.facebook.com/groups/716473723088464)
