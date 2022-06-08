@@ -66,7 +66,7 @@ The HMI (Human-Machine-Interface) LCD is another wonderful function. Taking Mini
 ![Eye](Doc/imgs/eye.gif)
 
 ## Education Courses
-We are targeting Mini Pupper for education. [Education courses](https://mangdang-minipupperdocs.readthedocs-hosted.com/en/latest/index.html) are also coming. To make the study of Mini Pupper easy and convenient, the courses will be released step by step, including mechanical, hardware, ROS, SLAM, navigation, AI functions, and so on. If you’ve been searching for an open-sourced consumer-grade quadruped research robot, Mini Pupper is the best platform for you.
+We are targeting Mini Pupper for education. [Education courses](https://minipupperdocs.readthedocs.io/en/latest/) are also coming. To make the study of Mini Pupper easy and convenient, the courses will be released step by step, including mechanical, hardware, ROS, SLAM, navigation, AI functions, and so on. If you’ve been searching for an open-sourced consumer-grade quadruped research robot, Mini Pupper is the best platform for you.
 We are inviting 10 professional hackers worldwide to prepare the courses. It will be unlike anything that you've ever seen before. 
 ![MiniPupper OnlineCourse](Doc/imgs/OnlineCourse.0.25MP.jpg)
 
