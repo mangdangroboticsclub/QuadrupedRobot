@@ -87,7 +87,7 @@ class Controller:
         return new_foot_locations, contact_modes
 
 
-    def run(self, state, command,location,attitude):
+    def run(self, state, command,location,attitude,robot_speed):
         """Steps the controller forward one timestep
 
         Parameters
@@ -165,7 +165,8 @@ class Controller:
                 )
             )
             # Set the foot locations to the default stance plus the standard height
-            
+            print('act:',self.dance_active_state)
+            #self.dance_active_state = True
             if self.dance_active_state == False:
 
                 state.foot_locations = (self.config.default_stance + np.array([0, 0, command.height])[:, np.newaxis])
@@ -185,7 +186,12 @@ class Controller:
                 for index_i in range(3):
                     for index_j in range(4):
                         location_buf[index_i,index_j] = location[index_i][index_j]
-                state.foot_locations = location_buf
+                if (abs(robot_speed[0])<0.01) and (abs(robot_speed[1])<0.01):
+                    state.foot_locations = location_buf
+                else:
+                    command.horizontal_velocity[0] = robot_speed[0]
+                    command.horizontal_velocity[1] = robot_speed[1]
+                    state.foot_locations, contact_modes = self.step_gait(state,command)
                 # Apply the desired body rotation
                 rotated_foot_locations = (
                     euler2mat(

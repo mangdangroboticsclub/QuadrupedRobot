@@ -1,18 +1,28 @@
 # Mini Pupper - ROS, OpenCV, Open-source, Pi Robot Dog
+Online channel: [Discord](https://discord.gg/xJdt3dHBVw), [FaceBook](https://www.facebook.com/groups/716473723088464), [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot)
+
 Mini Pupper will make robotics easier for schools, homeschool families, enthusiasts and beyond.
-![Mini Pupper CC Max Morse](Doc/imgs/MiniPupper.png)
+
+- ROS: support ROS SLAM&Navigation robot dog at low-cost price, endorsed by ROS.
+- OpenCV: support OpenCV official OAK-D-Lite 3D camera module, endorsed by OpenCV.
+- Open-source: DIY and custom what you want, won a HackadayPrize!
+- Raspberry Pi: it’s super expandable, endorsed by Raspberry Pi.
+
+![Mini Pupper ](Doc/imgs/MiniPupper.png)
+
+Mini Pupper was showed both on the first page of Kickstarter and Makuake campaign platform, and got many backers!
+![Mini Pupper Campaign](Doc/imgs/2021Campaign.jpg)
+
+Mini Pupper will have a workshop on Amazon 2022 re:MARS event.
+![Mini Pupper Amazon re:MARS](Doc/imgs/2022reMARS.org.jpg)
+
+![Mini Pupper Amazon ROS](Doc/imgs/ROS.github.jpg)
 
 ![Mini Pupper ROS Navigation](Doc/imgs/Navi.gif)
 
-![Mini Pupper CC Max Morse](Doc/imgs/Pees.gif)
+![Mini Pupper Pees](Doc/imgs/Pees.gif)
 
-ROS: support ROS SLAM&Navigation robot dog at low-cost price, endorsed by ROS.
 
-OpenCV: support OpenCV official OAK-D-Lite 3D camera module, endorsed by OpenCV.
-
-Open-source: DIY and custom what you want, won a HackadayPrize!
-
-Pi: it’s super expandable, endorsed by Raspberry Pi.
 
 ## Background
 You maybe see many demos from Boston Dynamics Spot Mini, and so on, many guys want to own their own robot dog to explore the functions, but the price is too high to accept, and it is not easy to explore the robot dog features.
@@ -67,29 +77,33 @@ The main software improvement from Pupper is our FSN (Full Self-Navigation) syst
 ## How to Build 
 To get started, check out the pages linked below on part sourcing and assembly.  
 - BOM list: https://drive.google.com/file/d/18phJat8GdK5Yq5p4K1ZmfY1-nMf1lQw4/view?usp=sharing
-- Documents: https://minipupperdocs.readthedocs.io/en/latest/
-- Software Installation: https://github.com/mangdangroboticsclub/QuadrupedRobot/blob/MiniPupper_V2/Doc/guide/software_installation.rst
-
+- Documents: https://minipupperdocs.readthedocs.io/en/latest/index.html
 
 
 ## How to Purchase 
 If you purchase the parts yourself one by one, it’ll run you about $800 and more time. However, you can purchase a kit to build the robot from MangDang channel for cheaper and one-stop shopping. 
-- [Kickstarter Crowdfunding Campaign](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit)
-- [Indiegogo Crowdfunding Campaign](https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/)
-- [Makuake Crowdfunding Campaign](https://www.makuake.com/project/mini_pupper/)
-- Amazon channel: [Mini Pupper Amazon US](https://www.amazon.com/s?me=A3V5171RNQ5C18&marketplaceID=ATVPDKIKX0DER) , [Mini Pupper Amazon Japan will open after Makuake close](https://www.amazon.co.jp/s?me=A14LOTMOI42BRX&marketplaceID=A1VC38T7YXB528)
-- Paypal channel: MangDang Paypal account is afreez.gan@gmail.com
-- Aliexpress channel: [Mini Pupper Aliexpress](https://www.aliexpress.com/store/911381222?spm=a2g0o.detail.1000007.1.2ed464e6sdYBwy)
+
+Get 10%+ discount by PayPal or Stripe​：tell us which kit you want by mail( sales@mangdang.net ), we will send you the stripe payment link( 135+ currencies and payment methods supported) or PayPal info.
+
+![Mini Pupper shop](Doc/imgs/stripPrice0518.png)
+
+
+![Mini Pupper onlineshop](Doc/imgs/onlineshop.png)
+
+- [Kickstarter Crowdfunding Campaign Link](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit)
+- [Indiegogo Crowdfunding Campaign Link](https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/)
+- [Makuake Crowdfunding Campaign Link](https://www.makuake.com/project/mini_pupper/)
+- Amazon channel: [Amazon US](https://www.amazon.com/s?me=A3V5171RNQ5C18&marketplaceID=ATVPDKIKX0DER) , [Amazon Japan](https://www.amazon.co.jp/s?me=A14LOTMOI42BRX&marketplaceID=A1VC38T7YXB528)
+- [Robotshop channel](https://www.robotshop.com/en/mini-pupper.html)
+- [Aliexpress channel](https://www.aliexpress.com/store/911381222?spm=a2g0o.detail.1000007.1.2ed464e6sdYBwy)
+- [Taobao channel](https://item.taobao.com/item.htm?spm=a230r.1.14.6.443b6a738ut6AT&id=669862578963&ns=1&abbucket=11#detail)
 
 ## About Stanford Student Robotics
 [Stanford Student Robotics](https://stanfordstudentrobotics.org/) is an entirely student-run group dedicated to building cool robots and learning new things. You can find many amazing projects on the website. Mini Pupper project is supported by [Nathan Kau](https://github.com/stanfordroboticsclub/StanfordQuadruped) from Stanford Student Robotics.
 
 ## About MangDang Technology Co., Limited
-Founded in 2020, [MangDang Technology Co., Limited](https://www.mangdang.net/) (MangDang) specializes in the research, development, and production of robot products that make peoples lives better. Mangdang is headquartered in HongKong, with R&D offices in Beijing. We are a global team with members from many countries and regions such as the United States, Japan, Canada, Europe, China and so on.
-- Mission: Using AI to make life better.
-- Vision: Every home, every one can use our robot product to make life better.
+Founded in 2020, [MangDang Technology Co., Limited](https://www.mangdang.net/) (MangDang) specializes in the research, development, and production of robot products that make peoples lives better. Mangdang is headquartered in HongKong, with offices in Beijing/China, Tokyo/Japan. We are a global team with members from many countries and regions such as the United States, Japan, Canada, Europe, China and so on.
 
 We are all dreamers, we look forward to connecting talents worldwide and innovating together to perform splendid times! 
 - For business, you can connect us by mail(sales@mangdang.net).
-- Beijing Office address: Innostyle, Building 5, No.36 Haidian West Street, Haidian District, Beijing, China.
-- Our online channel: [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot), [FaceBook](https://www.facebook.com/afreez.gan/) 
+- Our online channel: [Discord](https://discord.gg/xJdt3dHBVw), [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot), [FaceBook](https://www.facebook.com/groups/716473723088464)

@@ -25,14 +25,7 @@ quat_orientation = np.array([1, 0, 0, 0])
 
 cartoons_folder = "/home/ubuntu/Robotics/QuadrupedRobot/Mangdang/LCD/cartoons/"
 current_show = ""
-
-with open("/home/ubuntu/.hw_version", "r") as hw_f:
-    hw_version = hw_f.readline()
-
-if hw_version == 'P1\n':
-    disp = ST7789(14, 15, 47)
-else :
-    disp = ST7789(27, 24, 26)
+disp = ST7789()
 
 def pic_show(disp, pic_name, _lock):
     """ Show the specify picture
@@ -201,8 +194,9 @@ def main():
                 movement_ctl.resetMovementNumber()
             movement_ctl.runMovementScheme(movement_switch)
             food_location = movement_ctl.getMovemenLegsLocation()
-            attitude_location = movement_ctl.getMovemenAttitudeLocation()
-            controller.run(state,command,food_location,attitude_location)
+            attitude_location = movement_ctl.getMovemenAttitude()
+            robot_speed = movement_ctl.getMovemenSpeed()
+            controller.run(state,command,food_location,attitude_location,robot_speed)
 
             # Update the pwm widths going to the servos
             hardware_interface.set_actuator_postions(state.joint_angles)
