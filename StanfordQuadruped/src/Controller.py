@@ -1,5 +1,5 @@
 from src.Gaits import GaitController
-from src.GaitScheme import GaitScheme
+#from src.GaitScheme import GaitScheme
 from src.StanceController import StanceController
 from src.SwingLegController import SwingController
 from src.Utilities import clipped_first_order_filter
