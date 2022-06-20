@@ -37,7 +37,7 @@ class ServoParams:
         except:
             print("Error, get nv calibration params failed, use default value. Please calibrate your pupper !")
             matrix = np.array(
-            [[-9, 9, 12, 15], [35, 35, 60, 35], [-30, -27, -22, -48]]
+            [[0, 0, 0, 0], [45, 45, 45, 45], [-45, -45, -45, -45]]
             )
         self.neutral_angle_degrees = matrix
         self.servo_multipliers = np.array(
