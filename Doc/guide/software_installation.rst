@@ -29,7 +29,7 @@ You can also check the version from `ubuntu offical website. <https://ubuntu.com
 3. Use `etcher <https://www.balena.io/etcher/>`_ to flash the card. 
 ##########################################################################################
 
-* For quick start, you can also download the  `pre-installed image <https://drive.google.com/file/d/1hgohjpwbL9VGBdQ3Neu987gn56t0q4en/view?usp=sharing>`_ , (username: ubuntu ,  password: mangdang ) flash it into the card, then skip all the following steps and start to calibarte the Pupper Mini.
+* For quick start, you can also download the  `pre-installed image <https://drive.google.com/file/d/1jGsZJ1iJFbEAVZOWPUT4Q1R-OhnVhi0E/view?usp=sharing>`_ , (username: ubuntu ,  password: mangdang ) flash it into the card, then skip all the following steps and start to calibarte the Pupper Mini.
 
 * If you are using the recommended etcher, this is the start-up menu. Select ubuntu-21.10-preinstalled-server-arm64+raspi.img (file inside zip )and the SD card. 
 
