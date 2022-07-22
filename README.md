@@ -13,9 +13,13 @@ Mini Pupper will make robotics easier for schools, homeschool families, enthusia
 Mini Pupper was showed both on the first page of Kickstarter and Makuake campaign platform, and got many backers!
 ![Mini Pupper Campaign](Doc/imgs/2021Campaign.jpg)
 
-Mini Pupper will have a workshop on Amazon 2022 re:MARS event.
+Mini Pupper had [a wonderful workshop](https://www.youtube.com/watch?v=bUaszjfQXk4) on Amazon 2022 re:MARS event.
 ![Mini Pupper Amazon re:MARS](Doc/imgs/2022reMARS.org.jpg)
 
+Mini Pupper will have [a workshop](https://roscon.ros.org/2022/) on ROSCon 2022 event.
+![Mini Pupper ROSCon](Doc/imgs/ROSCon.1080x360.png)
+
+Regarding the Mini Pupper story, you can find more in the interviews with [Katherine Scott@ROS](https://www.youtube.com/watch?v=CP1ytNGgsUE&t=8s) and [Audrow Nash@Sense Think Act Podcast #18](https://www.youtube.com/watch?v=aFBhgRr6pyI&t=139s).
 ![Mini Pupper Amazon ROS](Doc/imgs/ROS.github.jpg)
 
 ![Mini Pupper ROS Navigation](Doc/imgs/Navi.gif)
@@ -82,27 +86,20 @@ To get started, check out the pages linked below on part sourcing and assembly.
 
 ## How to Purchase 
 If you purchase the parts yourself one by one, it’ll run you about $800 and more time. However, you can purchase a kit to build the robot from MangDang channel for cheaper and one-stop shopping. 
+The [Kickstarter](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit),[Indiegogo], (https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/), [Makuake](https://www.makuake.com/project/mini_pupper/) Crowdfunding Campaigns already closed. You can order by the below channels:
 
-Get 10%+ discount by PayPal or Stripe​：tell us which kit you want by mail( sales@mangdang.net ), we will send you the stripe payment link( 135+ currencies and payment methods supported) or PayPal info.
-
-![Mini Pupper shop](Doc/imgs/stripPrice0518.png)
-
-
-![Mini Pupper onlineshop](Doc/imgs/onlineshop.png)
-
-- [Kickstarter Crowdfunding Campaign Link](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit)
-- [Indiegogo Crowdfunding Campaign Link](https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/)
-- [Makuake Crowdfunding Campaign Link](https://www.makuake.com/project/mini_pupper/)
-- Amazon channel: [Amazon US](https://www.amazon.com/s?me=A3V5171RNQ5C18&marketplaceID=ATVPDKIKX0DER) , [Amazon Japan](https://www.amazon.co.jp/s?me=A14LOTMOI42BRX&marketplaceID=A1VC38T7YXB528)
-- [Robotshop channel](https://www.robotshop.com/en/mini-pupper.html)
-- [Aliexpress channel](https://www.aliexpress.com/store/911381222?spm=a2g0o.detail.1000007.1.2ed464e6sdYBwy)
-- [Taobao channel](https://item.taobao.com/item.htm?spm=a230r.1.14.6.443b6a738ut6AT&id=669862578963&ns=1&abbucket=11#detail)
+- [Our website](https://www.mangdang.net/Product)
+- [Our Shopify](https://mangdang.myshopify.com/)
+- Amazon: [Amazon US](https://www.amazon.com/s?me=A3V5171RNQ5C18&marketplaceID=ATVPDKIKX0DER) , [Amazon Japan](https://www.amazon.co.jp/s?me=A14LOTMOI42BRX&marketplaceID=A1VC38T7YXB528)
+- [Robotshop](https://www.robotshop.com/en/mini-pupper.html)
+- [Aliexpress](https://www.aliexpress.com/store/911381222?spm=a2g0o.detail.1000007.1.2ed464e6sdYBwy)
+- [Taobao](https://item.taobao.com/item.htm?spm=a230r.1.14.6.443b6a738ut6AT&id=669862578963&ns=1&abbucket=11#detail)
 
 ## About Stanford Student Robotics
 [Stanford Student Robotics](https://stanfordstudentrobotics.org/) is an entirely student-run group dedicated to building cool robots and learning new things. You can find many amazing projects on the website. Mini Pupper project is supported by [Nathan Kau](https://github.com/stanfordroboticsclub/StanfordQuadruped) from Stanford Student Robotics.
 
 ## About MangDang Technology Co., Limited
-Founded in 2020, [MangDang Technology Co., Limited](https://www.mangdang.net/) (MangDang) specializes in the research, development, and production of robot products that make peoples lives better. Mangdang is headquartered in HongKong, with offices in Beijing/China, Tokyo/Japan. We are a global team with members from many countries and regions such as the United States, Japan, Canada, Europe, China and so on.
+Founded in 2020, [MangDang](https://www.mangdang.net/) specializes in the research, development, and production of robot products that make peoples lives better. Mangdang is headquartered in HongKong, with offices in Beijing/China, Tokyo/Japan. We are a global team with members from many countries and regions such as the United States, Japan, Europe, China and so on.
 
 We are all dreamers, we look forward to connecting talents worldwide and innovating together to perform splendid times! 
 - For business, you can connect us by mail(sales@mangdang.net).

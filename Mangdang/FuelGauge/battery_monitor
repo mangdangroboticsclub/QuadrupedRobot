@@ -59,7 +59,7 @@ do
 		else
 			echo 0 > /sys/class/gpio/gpio25/value
 			echo 0 > /sys/class/gpio/gpio21/value
-			su ubuntu -l -c "mpg123 /home/ubuntu/Music/low_power.mp3"
+			su ubuntu -l -c "gsp-play-1.0 /home/ubuntu/Music/low_power.mp3"
 		fi
 	fi
 	sleep 8
