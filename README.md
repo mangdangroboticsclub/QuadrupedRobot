@@ -86,7 +86,7 @@ To get started, check out the pages linked below on part sourcing and assembly.
 
 ## How to Purchase 
 If you purchase the parts yourself one by one, it’ll run you about $800 and more time. However, you can purchase a kit to build the robot from MangDang channel for cheaper and one-stop shopping. 
-The [Kickstarter](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit),[Indiegogo] (https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/), [Makuake](https://www.makuake.com/project/mini_pupper/) Crowdfunding Campaigns already closed. You can order by the below channels:
+The [Kickstarter](https://www.kickstarter.com/projects/336477435/mini-pupper-open-sourceros-robot-dog-kit),[Indiegogo](https://www.indiegogo.com/projects/mini-pupper-open-source-ros-robot-dog-kit/), [Makuake](https://www.makuake.com/project/mini_pupper/) Crowdfunding Campaigns already closed. You can order by the below channels:
 
 - [Our Website](https://www.mangdang.net/Product)
 - [Our Shopify](https://mangdang.myshopify.com/)
