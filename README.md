@@ -1,6 +1,8 @@
 # Mini Pupper - ROS, OpenCV, Open-source, Pi Robot Dog
 Online channel: [Discord](https://discord.gg/xJdt3dHBVw), [FaceBook](https://www.facebook.com/groups/716473723088464), [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot)
 
+Document: https://minipupperdocs.readthedocs.io/en/latest/index.html
+
 Mini Pupper will make robotics easier for schools, homeschool families, enthusiasts and beyond.
 
 - ROS: support ROS SLAM&Navigation robot dog at low-cost price, endorsed by ROS.
