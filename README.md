@@ -1,3 +1,9 @@
+# [Mini Pupper 2](https://www.kickstarter.com/projects/336477435/mini-pupper-2-open-source-ros2-robot-kit-for-dreamers) is already launched on Kickstarter
+https://www.kickstarter.com/projects/336477435/mini-pupper-2-open-source-ros2-robot-kit-for-dreamers
+
+![Mini Pupper 2](Doc/imgs/MiniPupper2.jpg)
+
+
 # Mini Pupper - ROS, OpenCV, Open-source, Pi Robot Dog
 Online channel: [Discord](https://discord.gg/xJdt3dHBVw), [FaceBook](https://www.facebook.com/groups/716473723088464), [Youtube](https://www.youtube.com/channel/UCqHWYGXmnoO7VWHmENje3ug/featured), [Twitter](https://twitter.com/LeggedRobot)
 
