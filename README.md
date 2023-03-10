@@ -1,3 +1,33 @@
+## Installation
+
+### Flash Ubuntu preinstalled image to the SD card. 
+
+* Download `ubuntu-22.04.2-preinstalled-desktop-arm64+raspi.img.xz` from [the official website](https://ubuntu.com/download/raspberry-pi)  or
+* [MangDang Google drive share link](https://drive.google.com/drive/folders/1qprrK9C3pHTdDHjV_EAo2a8XZseoxD0H)
+
+### Boot Raspberry Pi 
+
+```sh
+cd ~
+sudo apt-get update
+sudo apt install git
+mkdir Robotics
+cd Robotics
+git clone https://github.com/mangdangroboticsclub/QuadrupedRobot
+cd QuadrupedRobot/Legacy/
+sudo bash pre_install.sh
+cd ..
+sudo bash install.sh
+
+sudo mv Mangdang/System/restart_joy.service /usr/lib/systemd/system/
+sudo mv Mangdang/System/joystart.sh /usr/sbin/
+sudo systemctl enable restart_joy
+sudo reboot
+
+```
+
+
+
 # [Mini Pupper 2](https://www.kickstarter.com/projects/336477435/mini-pupper-2-open-source-ros2-robot-kit-for-dreamers) is already launched on Kickstarter
 https://www.kickstarter.com/projects/336477435/mini-pupper-2-open-source-ros2-robot-kit-for-dreamers
 
