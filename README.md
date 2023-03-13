@@ -18,6 +18,7 @@ cd QuadrupedRobot/Legacy/
 sudo bash pre_install.sh
 cd ..
 sudo bash install.sh
+sudo reboot
 
 sudo mv Mangdang/System/restart_joy.service /usr/lib/systemd/system/
 sudo mv Mangdang/System/joystart.sh /usr/sbin/
