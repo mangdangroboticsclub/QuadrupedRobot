@@ -41,7 +41,8 @@ class ServoParams:
             )
         self.neutral_angle_degrees = matrix
         self.servo_multipliers = np.array(
-            [[1, 1, -1, -1], [-1, 1, -1, 1], [-1, 1, -1, 1]]
+            #[[1, 1, -1, -1], [-1, 1, -1, 1], [-1, 1, -1, 1]]
+            [[1, 1, -1, -1], [-1, 1, 1, -1], [-1, 1, 1, -1]]
         )
 
     @property
