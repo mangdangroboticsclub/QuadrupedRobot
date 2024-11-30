@@ -3,7 +3,7 @@
 ### Flash Ubuntu preinstalled image to the SD card. 
 
 * Download `ubuntu-22.04.2-preinstalled-desktop-arm64+raspi.img.xz` from [the official website](https://ubuntu.com/download/raspberry-pi)  or
-* [MangDang Google drive share link](https://drive.google.com/drive/folders/1qprrK9C3pHTdDHjV_EAo2a8XZseoxD0H)
+* [MangDang Google drive share link](https://drive.google.com/drive/folders/1rrdscbPf1SwlguvlurC-2a-d8pVmieLm?usp=sharing)
 
 ### Boot Raspberry Pi 
 
