@@ -625,3 +625,290 @@ class MovementGroups:
         return self.MovementLib
 
 #----------- The level3 samples to DIY complicated movement END END -----------#  
+
+
+
+
+ #############
+
+    def walk(self):
+        """
+        Static-walk gait based on the user's diagram and timing definition.
+
+        Leg numbering:
+            1 = front-right  (FR)
+            2 = front-left   (FL)
+            3 = rear-right   (RR)
+            4 = rear-left    (RL)
+
+        Static walk order:
+            1 -> 4 -> 2 -> 3
+            FR -> RL -> FL -> RR
+
+        Timing:
+            t1 = swing_time      (foot in air)
+            t2 = clearance_time  (delay between diagonal-pair lift-offs)
+            t3 = overlap_time    (all four feet on ground)
+
+            T = 2 * (t1 + t2 + t3)
+
+        Static gait condition:
+            t2 >= t1 and t3 >= 0
+        """
+
+        import numpy as np
+
+        dance_scheme = Movements('walk')
+
+        # Framework leg indices
+        FR, FL, RR, RL = 0, 1, 2, 3
+
+        # -------------------------------------------------
+        # Base stance [x, y, z]
+        # z more negative = lower foot
+        # -------------------------------------------------
+        base = [
+            [ 0.055, -0.060, -0.090],   # FR = 1
+            [ 0.055,  0.060, -0.090],   # FL = 2  ### -0.072
+            [-0.055, -0.060, -0.085],   # RR = 3
+            [-0.055,  0.060, -0.085],   # RL = 4
+        ]
+
+        # -------------------------------------------------
+        # Gait geometry
+        # -------------------------------------------------
+        x_amp = 0.040      # half stride in body frame 0.020; 0.014
+        z_lift = 0.050    # foot lift height 0.030 ; 0.012
+
+        # -------------------------------------------------
+        # Gait timing (in discrete frames)
+        # Must satisfy t2 >= t1 for a static walk
+        # -------------------------------------------------
+        t1 = 9   # swing_time 6
+        t2 = 12  # clearance_time 8
+        t3 = 3   # overlap_time 2
+
+        if t2 < t1 or t3 < 0:
+            raise ValueError("Static walk requires t2 >= t1 and t3 >= 0.")
+
+        T = 2 * (t1 + t2 + t3)
+
+        # Lift-off offsets for the 4 legs:
+        # 1 -> 4 -> 2 -> 3  i.e. FR -> RL -> FL -> RR
+        offsets = {
+            FR: 0,
+            RL: t2,
+            FL: t1 + t2 + t3,
+            RR: t1 + 2 * t2 + t3,
+        }
+
+        dance_all_legs = [[], [], [], []]
+        dance_speed = []
+        dance_attitude = []
+
+
+        def append_pose(pose, speed_xyz=(0.005, 0.0, 0.0), attitude_rpy=(0.0, 0.0, 0.0)):
+            """
+            Store one timestep of motion:
+            - pose: 4x [x,y,z] foot positions
+            - speed_xyz: execution speed
+            - attitude_rpy: body orientation (roll, pitch, yaw)
+            """
+            for leg in range(4):
+                dance_all_legs[leg].append(pose[leg][:])
+            dance_speed.append(list(speed_xyz))
+            dance_attitude.append(list(attitude_rpy))
+
+        
+        def bezier5(p0, p1, p2, p3, p4, s):
+            """
+            5-point Bezier curve:
+            Used to generate smooth trajectories (position vs phase).
+            Ensures smooth start/end velocity (important for foot motion).
+            """
+            u = 1.0 - s
+            return (
+                (u ** 4) * p0
+                + 4.0 * (u ** 3) * s * p1
+                + 6.0 * (u ** 2) * (s ** 2) * p2
+                + 4.0 * u * (s ** 3) * p3
+                + (s ** 4) * p4
+            )
+
+        def smoothstep(s):
+            """
+            Smooth interpolation (0→1) with zero slope at both ends.
+            Used for stance phase to avoid sudden velocity jumps.
+            """
+            return s * s * (3.0 - 2.0 * s)
+
+        def swing_profile(s):
+            """
+            Swing phase trajectory (foot in air):
+            - x: moves from rear → front
+            - z: lifts → peaks → lands
+            Uses Bezier to ensure smooth lift-off and touchdown.
+            """
+            s = np.clip(s, 0.0, 1.0)
+
+            # forward motion: rear -> front
+            x = bezier5(
+                -x_amp,         # start rear
+                -0.75 * x_amp,  # gentle start
+                0.0,            # mid
+                0.75 * x_amp,   # gentle finish
+                x_amp,          # end front
+                s
+            )
+
+            # vertical motion: soft takeoff and touchdown
+            z = bezier5(
+                0.0,                # start on ground
+                0.20 * z_lift,      # very gentle lift-off
+                1.00 * z_lift,      # peak region #### 0.85
+                0.20 * z_lift,      # gentle landing prep
+                0.0,                # end on ground
+                s
+            )
+
+            return x, z
+
+        def support_profile(s):
+            """
+            Stance phase trajectory (foot on ground):
+            - x: moves backward relative to body (push phase)
+            - z: fixed (no lifting)
+            Uses smoothstep to avoid jerky motion.
+            """
+            s = np.clip(s, 0.0, 1.0)
+            ss = smoothstep(s)
+            x = x_amp - 2.0 * x_amp * ss
+            z = 0.0
+            return x, z
+
+
+        def foot_pose(leg, k):
+            """
+            Compute foot position for a given leg at timestep k.
+
+            - Determines whether leg is in swing or stance phase
+            - Calls corresponding profile (swing_profile / support_profile)
+            - Adds relative motion to base pose
+            """
+            phase = (k - offsets[leg]) % T
+
+            if phase < t1:
+                # swing phase
+                s = phase / max(t1 - 1, 1)
+                x_rel, z_rel = swing_profile(s)
+            else:
+                # support phase
+                stance_phase = phase - t1
+                stance_len = T - t1
+                s = stance_phase / max(stance_len - 1, 1)
+                x_rel, z_rel = support_profile(s)
+
+            return [
+                base[leg][0] + x_rel,
+                base[leg][1],
+                base[leg][2] + z_rel
+            ]
+
+        
+        def current_swing_leg(k):
+            """
+            Identify which leg is currently in swing phase at timestep k.
+            Returns:
+                leg index if in swing
+                None if all legs are in stance
+            """
+
+            for leg in [FR, RL, FL, RR]:
+                phase = (k - offsets[leg]) % T
+                if phase < t1:
+                    return leg
+            return None
+
+        def body_sway_for_leg(swing_leg, k):
+            """
+            Compute body sway (COM shift) based on which leg is swinging.
+
+            Output:
+                (x_shift, y_shift, z_shift)
+
+            Behavior:
+            - Starts slightly before leg lift (pre-sway)
+            - Front legs: stronger compensation (more unstable)
+            - Rear legs: weaker compensation
+            - z component: small vertical body adjustment
+            """
+            if swing_leg is None:
+                return 0.0, 0.0, 0.0
+
+            pre_frames = 3  # start sway before lift
+
+            # start sway a bit earlier than the actual swing
+            phase = (k - offsets[swing_leg] + pre_frames) % T
+            s = phase / max(t1 + pre_frames - 1, 1)
+
+            # clamp so sway only acts around this leg's swing window
+            s = np.clip(s, 0.0, 1.0)
+            w = np.sin(np.pi * s)
+
+            # front legs need stronger compensation
+            front_x = 0.006
+            front_y = 0.008
+            front_z = 0.002 
+
+            # hind legs need less
+            rear_x = 0.003
+            rear_y = 0.006
+            rear_z = 0.000 
+
+            if swing_leg == FR:
+                return -front_x * w,  front_y * w, front_z * w
+            elif swing_leg == FL:
+                return -front_x * w, -front_y * w, front_z * w
+            elif swing_leg == RR:
+                return  rear_x * w,  rear_y * w, rear_z * w
+            elif swing_leg == RL:
+                return  rear_x * w, -rear_y * w, rear_z * w
+
+            return 0.0, 0.0, 0.0
+                
+        
+        # ------------------------------------
+
+        # -------------------------------------------------
+        # Build one full gait cycle
+        # -------------------------------------------------
+        for k in range(T):
+            pose = [None] * 4
+            pose[FR] = foot_pose(FR, k)
+            pose[FL] = foot_pose(FL, k)
+            pose[RR] = foot_pose(RR, k)
+            pose[RL] = foot_pose(RL, k)
+
+            swing_leg = current_swing_leg(k)
+
+            body_shift_x, body_shift_y, body_shift_z = body_sway_for_leg(swing_leg, k)
+
+            for leg in [FR, FL, RR, RL]:
+                pose[leg][0] -= body_shift_x
+                pose[leg][1] -= body_shift_y
+                pose[leg][2] += body_shift_z
+
+
+            append_pose(pose)
+
+
+        # Playback tuning
+        dance_scheme.setInterpolationNumber(1) ##3
+        dance_scheme.setLegsSequence(dance_all_legs, "Multiple",48)
+        dance_scheme.setAttitudeSequence(dance_attitude, "Multiple", 48)
+        dance_scheme.setSpeedSequence(dance_speed, "Multiple", 48)
+
+        self.MovementLib.append(dance_scheme)
+        return self.MovementLib
+
+

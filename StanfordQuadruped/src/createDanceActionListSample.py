@@ -105,4 +105,7 @@ Move.stop()
 Move.body_cycle()
 #Move.head_ellipse()
 
+### Walk
+Move.walk()
+
 MovementLib = Move.MovementLib
