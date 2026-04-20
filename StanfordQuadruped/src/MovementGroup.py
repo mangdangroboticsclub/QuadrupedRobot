@@ -631,7 +631,9 @@ class MovementGroups:
 
  #############
 
-    def walk(self):
+ ### tiME AS a parameter
+
+    def walk(self, t=10):
         """
         Static-walk gait based on the user's diagram and timing definition.
 
@@ -654,9 +656,12 @@ class MovementGroups:
 
         Static gait condition:
             t2 >= t1 and t3 >= 0
+
+        Move.walk(self, t): minipupper walks for t seconds, default 10 seconds
         """
 
         import numpy as np
+        import math
 
         dance_scheme = Movements('walk')
 
@@ -829,18 +834,11 @@ class MovementGroups:
                     return leg
             return None
 
+
         def body_sway_for_leg(swing_leg, k):
             """
-            Compute body sway (COM shift) based on which leg is swinging.
-
-            Output:
-                (x_shift, y_shift, z_shift)
-
-            Behavior:
-            - Starts slightly before leg lift (pre-sway)
-            - Front legs: stronger compensation (more unstable)
-            - Rear legs: weaker compensation
-            - z component: small vertical body adjustment
+            3D body sway with pre-shift:
+            body shifts first, then the swing leg lifts.
             """
             if swing_leg is None:
                 return 0.0, 0.0, 0.0
@@ -901,12 +899,20 @@ class MovementGroups:
 
             append_pose(pose)
 
+        # desired walking time: user input
+        t_desired = t  
 
+        interp = 1
+
+        cycle_len = len(dance_all_legs[0])
+
+        repeat = int(max(1, math.ceil(t_desired / (cycle_len * interp * 0.015))))
+               
         # Playback tuning
-        dance_scheme.setInterpolationNumber(1) ##3
-        dance_scheme.setLegsSequence(dance_all_legs, "Multiple",48)
-        dance_scheme.setAttitudeSequence(dance_attitude, "Multiple", 48)
-        dance_scheme.setSpeedSequence(dance_speed, "Multiple", 48)
+        dance_scheme.setInterpolationNumber(interp) ##3
+        dance_scheme.setLegsSequence(dance_all_legs, "Multiple", repeat)
+        dance_scheme.setAttitudeSequence(dance_attitude, "Multiple", repeat)
+        dance_scheme.setSpeedSequence(dance_speed, "Multiple", repeat)
 
         self.MovementLib.append(dance_scheme)
         return self.MovementLib
