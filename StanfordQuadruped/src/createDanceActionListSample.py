@@ -105,4 +105,9 @@ Move.stop()
 Move.body_cycle()
 #Move.head_ellipse()
 
+# Walk
+# Move.walk(t): minipupper walks for t seconds, default 10 seconds
+
+Move.walk()
+
 MovementLib = Move.MovementLib
