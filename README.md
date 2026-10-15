@@ -56,7 +56,7 @@ All capabilities stem from our proprietary high-performance, **3-DoF coreless sm
   <img width="680" alt="MD-300C-150 Smart Servo Architecture" src="https://github.com/user-attachments/assets/df96e932-38e8-4ce4-802b-bc2e8bd37f65" />
 </p>
 
-## Ecosystem Roadmap
+## Open Source Repo Guide
 
 | Component / Repo | Description & Source Code Directory |
 |---|---|
@@ -68,3 +68,16 @@ All capabilities stem from our proprietary high-performance, **3-DoF coreless sm
 | [🍓 Mini Pupper 4 - Pi Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | High-level application space source code tailored for the Raspberry Pi computing chassis. |
 | [🤝 CONTRIBUTING.md](CONTRIBUTING.md) | Developer guidelines for compiling, local simulation testing, layout conventions, and code submission rules. |
 | [📖 Online Manual & FAQ](https://minipupperdocs.readthedocs.io/en/latest/index.html) | Comprehensive documentation hub, including modular mechanical blueprints, PCB schematics, and open research challenges. |
+| [mini pupper 1 bsp](https://github.com/mangdangroboticsclub/mini_pupper_bsp) | BSP(board support package) for Mini Pupper 1. |
+| [mini pupper 2 bsp](https://github.com/mangdangroboticsclub/mini_pupper_2_bsp) | BSP(board support package) for Mini Pupper 2. |
+| [mini pupper web controller](https://minipupperdocs.readthedocs.io/en/latest/index.html) | This code provides a web GUI for Mini Pupper 1&2 running StanfordQuadruped. |
+
+
+### Contributions
+
+#### Repositories
+
+| Repository                                                                               | Description                                                                                                                                                                      | Status       |
+| ---                                                                                      | ---                                                                                                                                                                              | ---          |
+| [minipupper_kinematics](https://github.com/hdumcke/minipupper_kinematics)                | This repositories contains Jupyter notebook that used to gain a better understanding of the kinematics of a quadruped robot in general and Mini Pupper 1 in particular. | experimental |
+| [mini-pupper-jupyter-notebooks](https://github.com/Tiryoh/mini-pupper-jupyter-notebooks) | ROSCon2022 Jupyter Notebooks for Mini Pupper 1.                                                                                                                                    | experimental |
