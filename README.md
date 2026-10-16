@@ -58,7 +58,7 @@ All capabilities stem from our proprietary high-performance, **3-DoF coreless sm
 
 ## Open Source Repo Guide
 
-| Component / Repo | Description & Source Code Directory |
+| Github Repo | Description |
 |---|---|
 | [🤖 RL ](https://github.com) | The physics engine backend: MuJoCo environments, PPO pipelines, domain randomization, and the baked-in ONNX export runtime. |
 | [⚙️ BAM Friction Engine](https://github.com/mangdangroboticsclub/bam) | Hardware actuator physics repository. The MangDang MD-300C-150 servo is fully benchmarked and adapted to BAM. |
