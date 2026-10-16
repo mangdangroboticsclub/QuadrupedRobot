@@ -60,10 +60,10 @@ All capabilities stem from our proprietary high-performance, **3-DoF coreless sm
 
 | Github Repo | Description |
 |---|---|
-| [🤖 RL ](https://github.com) | The physics engine backend: MuJoCo environments, PPO pipelines, domain randomization, and the baked-in ONNX export runtime. |
+| [🤖 RL ](https://github.com) | The physics engine backend: MuJoCo and NVIDIA Isaac environments, PPO pipelines, domain randomization, and the baked-in ONNX export runtime. |
 | [⚙️ BAM Friction Engine](https://github.com/mangdangroboticsclub/bam) | Hardware actuator physics repository. The MangDang MD-300C-150 servo is fully benchmarked and adapted to BAM. |
-| [🛹 ROS 2 Core Stack](https://github.com/mangdangroboticsclub/mini_pupper_ros) | Our main software platform. We strictly follow the official Open Robotics roadmap with stable support up to ROS 2 Jazzy. |
-| [📡 micro-ROS Stack](https://github.com/mangdangroboticsclub/mini_pupper_ros) | Real-time lower-level agent bridging. Actuator DDS communications introduced natively from Mini Pupper 4. |
+| [🛹 ROS 2 Core Stack](https://github.com/mangdangroboticsclub/mini_pupper_ros) | ROS software platform. We follow the official Open Robotics roadmap with stable support up to ROS 2 Jazzy and Lyrical. |
+| [📡 micro-ROS Stack](https://github.com/mangdangroboticsclub/mini_pupper_ros) | micro ROS software platform. Real-time lower-level agent bridging. |
 | [🧠 MCU Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | Complete firmware layer source code for the onboard microcontroller, including embedded local AI routing. |
 | [🍓 Raspberry Pi Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | High-level application space source code tailored for the Raspberry Pi computing chassis. |
 | [🤝 CONTRIBUTING.md](CONTRIBUTING.md) | Developer guidelines for compiling, local simulation testing, layout conventions, and code submission rules. |
