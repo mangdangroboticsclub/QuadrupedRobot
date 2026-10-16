@@ -67,7 +67,7 @@ All capabilities stem from our proprietary high-performance, **3-DoF coreless sm
 | [🧠 MCU Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | Complete firmware layer source code for the onboard microcontroller, including embedded local AI routing. |
 | [🍓 Raspberry Pi Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | High-level application space source code tailored for the Raspberry Pi computing chassis. |
 | [🤝 CONTRIBUTING.md](CONTRIBUTING.md) | Developer guidelines for compiling, local simulation testing, layout conventions, and code submission rules. |
-| [📖 Online Manual & FAQ](https://minipupperdocs.readthedocs.io/en/latest/index.html) | Comprehensive documentation hub, including modular mechanical blueprints, PCB schematics, and open research challenges. |
+| [📖 Online Manual](https://minipupperdocs.readthedocs.io/en/latest/index.html) | Comprehensive documentation hub, including modular mechanical blueprints, PCB schematics, and open research challenges. |
 | [mini pupper 1 bsp](https://github.com/mangdangroboticsclub/mini_pupper_bsp) | BSP(board support package) for Mini Pupper 1. |
 | [mini pupper 2 bsp](https://github.com/mangdangroboticsclub/mini_pupper_2_bsp) | BSP(board support package) for Mini Pupper 2. |
 | [mini pupper web controller](https://minipupperdocs.readthedocs.io/en/latest/index.html) | This code provides a web GUI for Mini Pupper 1&2 running StanfordQuadruped. |
