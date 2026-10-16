@@ -60,12 +60,12 @@ All capabilities stem from our proprietary high-performance, **3-DoF coreless sm
 
 | Component / Repo | Description & Source Code Directory |
 |---|---|
-| [🤖 Reinforcement Learning](https://github.com) | The physics engine backend: MuJoCo environments, PPO pipelines, domain randomization, and the baked-in ONNX export runtime. |
+| [🤖 RL ](https://github.com) | The physics engine backend: MuJoCo environments, PPO pipelines, domain randomization, and the baked-in ONNX export runtime. |
 | [⚙️ BAM Friction Engine](https://github.com/mangdangroboticsclub/bam) | Hardware actuator physics repository. The MangDang MD-300C-150 servo is fully benchmarked and adapted to BAM. |
 | [🛹 ROS 2 Core Stack](https://github.com/mangdangroboticsclub/mini_pupper_ros) | Our main software platform. We strictly follow the official Open Robotics roadmap with stable support up to ROS 2 Jazzy. |
 | [📡 micro-ROS Stack](https://github.com/mangdangroboticsclub/mini_pupper_ros) | Real-time lower-level agent bridging. Actuator DDS communications introduced natively from Mini Pupper 4. |
-| [🧠 Mini Pupper 4 - MCU Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | Complete firmware layer source code for the onboard microcontroller, including embedded local AI routing. |
-| [🍓 Mini Pupper 4 - Pi Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | High-level application space source code tailored for the Raspberry Pi computing chassis. |
+| [🧠 MCU Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | Complete firmware layer source code for the onboard microcontroller, including embedded local AI routing. |
+| [🍓 Raspberry Pi Brain](https://github.com/mangdangroboticsclub/minipupper-4-mcu) | High-level application space source code tailored for the Raspberry Pi computing chassis. |
 | [🤝 CONTRIBUTING.md](CONTRIBUTING.md) | Developer guidelines for compiling, local simulation testing, layout conventions, and code submission rules. |
 | [📖 Online Manual & FAQ](https://minipupperdocs.readthedocs.io/en/latest/index.html) | Comprehensive documentation hub, including modular mechanical blueprints, PCB schematics, and open research challenges. |
 | [mini pupper 1 bsp](https://github.com/mangdangroboticsclub/mini_pupper_bsp) | BSP(board support package) for Mini Pupper 1. |
