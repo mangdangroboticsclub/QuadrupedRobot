@@ -43,16 +43,16 @@
 | Baud Rate              | 9,600 [bps] ~ 4 [Mbps]                                                                                                                                                                                 |
 | Control Algorithm      | PID control                                                                                                                                                                                            |
 | Resolution             | 4096 [pulse/rev]                                                                                                                                                                                       |
-| Operating Modes        | Current Control Mode Velocity Control Mode Position Control Mode (0 ~ 360 [°]) Extended Position Control Mode (Multi-turn) Current-based Position Control Mode PWM Control Mode (Voltage Control Mode) |
+| Operating Modes        | Current Control Mode<br> Velocity Control Mode <br>Position Control Mode (0 ~ 310 [°])<br> Extended Position Control Mode (Multi-turn) <br> Current-based Position Control Mode <br>PWM Control Mode (Voltage Control Mode) |
 | Weight                 | 65 [g]                                                                                                                                                                                                 |
 | Dimensions (W x H x D) | **Ø40.0 x 33.3** [mm]                                                                                                                                                                                  |
 | Gear Ratio             | 161.9:1 | 155.3:1 | 152.7:1                                                                                                                                                                            |
 | Stall Torque           | 0.5 [N.m] (at 9 [V], 0.7 [A], 0.71 [Nm/A])0.6 [N.m] (at 11.1 [V], 0.8 [A], 0.75 [Nm/A])0.7 [N.m] (at 6.0 [V], 0.9 [A], 0.78 [Nm/A])                                                                  |
-| No Load Speed          | 99/100/101 [rev/min] (at 7.4 [V]) **150/152/153 [rev/min] (at 11.1 [V])** 206/209/209 [rev/min] (at 14.8 [V])                                                                                          |
+| No Load Speed          | 99/100/101 [rev/min] (at 7.4 [V])<br> **150/152/153 [rev/min] (at 11.1 [V])** <br>206/209/209 [rev/min] (at 14.8 [V])                                                                                          |
 | Operating Temperature  | -5 ~ +70 [°C]                                                                                                                                                                                          |
 | Input Voltage          | 9.0 ~ 12.6 [V] (**Recommended : 11.1 [V]**)                                                                                                                                                            |
 | Command Signal         | Digital Packet                                                                                                                                                                                         |
-| Physical Connection    | SPITTL : ongoing                                                                                                                                                                                      |
+| Physical Connection    | SPI<br>TTL : ongoing                                                                                                                                                                                      |
 | ID                     | 253 ID (0 ~ 252)                                                                                                                                                                                       |
 | Feedback               | Position, Velocity, Current, Realtime tick, Trajectory, Temperature, Input Voltage, etc                                                                                                                |
 | Case Material          | Engineering Plastic                                                                                                                                                                                    |
@@ -1400,13 +1400,9 @@ To control the MANGDANG actuators, the main controller needs to convert its UART
 
 ![MD-300-150 dimensions](MD-300-150.dimension.jpeg)
 
-- [Download MD-300-150.pdf](https://www.robotis.com/service/download.php?no=1986)
-- [Download MD-300-150.dwg](https://www.robotis.com/service/download.php?no=1985)
-- [Download MD-300-150.stp](https://www.robotis.com/service/download.php?no=1987)
-
-Please also checkout **[MANGDANG Download Center](http://en.robotis.com/service/downloadpage.php?ca_id=70)** for software applications, 3D/2D CAD, and other useful resources!
+Please also checkout **[MANGDANG Download Center](https://drive.google.com/drive/folders/1AnPtVVnhG7HxUo7Aw38GG5BptCniD_WK?usp=sharing)** for software applications, 3D/2D CAD, and other useful resources!
 
 ## Moment of Inertia
 
-- [Download MD-300-150 moment of inertia](https://www.robotis.com/service/download.php?no=2136)
+- [Download MD-300-150 moment of inertia]()
 
