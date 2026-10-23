@@ -26,13 +26,13 @@
   <img src="docs/images/Mujoko.gif" alt="MuJoCo Simulation" width="410">
 </td>
 <td width="50%">
-  <img src="docs/images/BAM.gif" alt="BAM Actuator Mechanics" width="410">
+  <img src="docs/images/climbStairs.gif" alt="BAM Actuator Mechanics" width="410">
 </td>
 </tr>
   
 <tr>
-<td><b>Close the Sim2Real Gap.</b> Train complex neural network policies flawlessly in high-fidelity simulation, and deploy straight to the real physical robot.</td>
-<td><b>Native BAM Integration.</b> Fully compatible with Better Actuator Models (BAM) to capture precise joint friction physics, letting you focus on your advanced applications.</td>
+<td><b>Backflip.</b> Train complex neural network policies flawlessly in high-fidelity simulation, and deploy straight to the real physical robot.</td>
+<td><b>Climb stairs</b> Next-Gen Performance. Obstacles and Stairs are No Match.</td>
 </tr>
 
 <tr>
@@ -45,8 +45,8 @@
 </tr>
 
 <tr>
-<td><b>Low-Level micro-ROS.</b> Native support for micro-ROS pipelines directly on the microcontroller for reliable, real-time actuator control.</td>
-<td><b>Next-Gen ROS 2 Jazzy.</b> Ready-to-run out-of-the-box templates for advanced SLAM mapping, path planning, and autonomous Nav2 stacks.</td>
+<td><b>Native BAM Integration.</b> Fully compatible with Better Actuator Models (BAM) to capture precise joint friction physics, letting you focus on your advanced applications.</td>
+<td><b>ROS 2 Jazzy and micro-ros.</b> Ready-to-run out-of-the-box templates for advanced SLAM mapping, path planning, and autonomous Nav2 stacks.</td>
 </tr>
 </table>
 
