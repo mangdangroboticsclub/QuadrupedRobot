@@ -46,7 +46,7 @@
 
 <tr>
 <td><b>Native BAM Integration: </b> Fully compatible with Better Actuator Models (BAM) to capture precise joint friction physics, letting you focus on your advanced applications.</td>
-<td><b>Advanced ROS 2 Stack: </b> Out-of-the-box templates featuring ROS 2 Jazzy and micro-ROS for SLAM mapping, Nav2 path planning, and rapid development.</td>
+<td><b>Advanced ROS 2 Stack: </b> Out-of-the-box templates featuring ROS 2 Jazzy and micro-ROS for SLAM, Nav2 path planning, and rapid development.</td>
 </tr>
 </table>
 
