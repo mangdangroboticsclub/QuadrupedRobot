@@ -50,6 +50,10 @@
 </tr>
 </table>
 
+<p align="center">
+  <img src="docs/images/mp4.jpg" alt="Mini Pupper 4" width="820">
+</p>
+
 All capabilities stem from our proprietary high-performance, **3-DoF coreless smart servo joints** — the ultimate, versatile building block for modern open-source robotics.
 
 <p align="center">
