@@ -32,7 +32,7 @@
   
 <tr>
 <td><b>Close the Sim2Real Gap: </b> Train complex neural network policies flawlessly in high-fidelity simulation, and deploy straight to the real physical robot.</td>
-<td><b>Adapt to Diverse Terrains: </b> Powered by proprietary 3-DoF coreless actuators, Mini Pupper 4 delivers next-gen torque to effortlessly climb stairs and clear complex obstacles.</td>
+<td><b>Adapt to Diverse Terrains: </b> Powered by proprietary 3-DoF coreless actuators, Mini Pupper 4 effortlessly climbs stairs and clear complex obstacles.</td>
 </tr>
 
 <tr>
@@ -46,7 +46,7 @@
 
 <tr>
 <td><b>Native BAM Integration: </b> Fully compatible with Better Actuator Models (BAM) to capture precise joint friction physics, letting you focus on your advanced applications.</td>
-<td><b>Advanced ROS 2 Stack: </b> Out-of-the-box templates featuring ROS 2 Jazzy and micro-ROS for advanced SLAM mapping, autonomous Nav2 path planning, and rapid development.</td>
+<td><b>Advanced ROS 2 Stack: </b> Out-of-the-box templates featuring ROS 2 Jazzy and micro-ROS for SLAM mapping, Nav2 path planning, and rapid development.</td>
 </tr>
 </table>
 
